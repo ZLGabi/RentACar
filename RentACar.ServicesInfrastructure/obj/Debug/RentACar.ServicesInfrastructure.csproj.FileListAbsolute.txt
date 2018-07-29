@@ -1,0 +1,11 @@
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.ServicesInfrastructure.dll
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.ServicesInfrastructure.pdb
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.DataContext.dll
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\EntityFramework.dll
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.DataContext.pdb
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.DataContext.dll.config
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\EntityFramework.xml
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.csprojResolveAssemblyReference.cache
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.csproj.CoreCompileInputs.cache
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.dll
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.pdb

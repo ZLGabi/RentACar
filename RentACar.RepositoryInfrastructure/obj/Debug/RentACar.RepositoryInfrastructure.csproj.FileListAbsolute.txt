@@ -1,0 +1,11 @@
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\RentACar.RepositoryInfrastructure.dll.config
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\RentACar.RepositoryInfrastructure.dll
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\RentACar.RepositoryInfrastructure.pdb
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\EntityFramework.dll
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\EntityFramework.SqlServer.dll
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\EntityFramework.xml
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\EntityFramework.SqlServer.xml
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.csprojResolveAssemblyReference.cache
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.csproj.CoreCompileInputs.cache
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.dll
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.pdb
