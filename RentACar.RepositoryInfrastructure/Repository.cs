@@ -8,34 +8,37 @@ namespace RentACar.RepositoryInfrastructure
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly DbContext Context;
+        private readonly DbContext _context;
+        private readonly IDbSet<TEntity> _dbSet;
+
         public Repository(DbContext context)
         {
-            Context = context;
+            _context = context;
+            _dbSet = context.Set<TEntity>();
         }
 
         public TEntity Get(int id)
         {
-            return Context.Set<TEntity>().Find(id);
+            return _dbSet.Find(id);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            return Context.Set<TEntity>().ToList();
+            return _dbSet.ToList();
         }
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return Context.Set<TEntity>().Where(predicate);
+            return _dbSet.Where(predicate);
         }
 
         public void Add(TEntity entity)
         {
-            Context.Set<TEntity>().Add(entity);
+            _dbSet.Add(entity);
         }
 
         public void Remove(TEntity entity)
         {
-            Context.Set<TEntity>().Remove(entity);
+            _dbSet.Remove(entity);
         }
     }
 }

@@ -9,3 +9,14 @@ D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.Services
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.csproj.CoreCompileInputs.cache
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.dll
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.pdb
+D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.ServicesInfrastructure.dll
+D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.ServicesInfrastructure.pdb
+D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.DataContext.dll
+D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.RepositoryInfrastructure.dll
+D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\EntityFramework.dll
+D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.DataContext.pdb
+D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.RepositoryInfrastructure.pdb
+D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\EntityFramework.xml
+D:\Training\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.csprojResolveAssemblyReference.cache
+D:\Training\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.dll
+D:\Training\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.pdb

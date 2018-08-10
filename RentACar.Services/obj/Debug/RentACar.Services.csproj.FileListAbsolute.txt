@@ -17,3 +17,6 @@ D:\Proiecte\RentACar\RentACar.Services\obj\Debug\RentACar.Services.csprojResolve
 D:\Proiecte\RentACar\RentACar.Services\obj\Debug\RentACar.Services.csproj.CoreCompileInputs.cache
 D:\Proiecte\RentACar\RentACar.Services\obj\Debug\RentACar.Services.dll
 D:\Proiecte\RentACar\RentACar.Services\obj\Debug\RentACar.Services.pdb
+D:\Training\RentACar\RentACar.Services\obj\Debug\RentACar.Services.csprojResolveAssemblyReference.cache
+D:\Training\RentACar\RentACar.Services\obj\Debug\RentACar.Services.dll
+D:\Training\RentACar\RentACar.Services\obj\Debug\RentACar.Services.pdb

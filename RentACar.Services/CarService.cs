@@ -9,16 +9,18 @@ namespace RentACar.Services
 {
     public class CarService : ICarService
     {
-        private readonly Repository<Car> _carRepository;
-        public CarService(DbContext context)
+        private readonly IRepository<Car> _carRepository;
+        public CarService(IUnitOfWork unitOfWork)
         {
-            _carRepository = new Repository<Car>(context);
+            
+            _carRepository = unitOfWork.GetRepository<Car>();
         }
 
         public IEnumerable<CarDTO> GetCarsByPortfolioId(int id)
         {
             var cars = _carRepository.Find(p => p.Portfolio.PortfolioId == id);
-            return cars;
+            var carsDTO = AutoMapper.Mapper.Map<IEnumerable<CarDTO>>(cars);
+            return carsDTO;
         }
     }
 }

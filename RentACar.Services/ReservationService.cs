@@ -10,7 +10,7 @@ namespace RentACar.Services
         private readonly Repository<Reservation> _reservationRepository;
         public ReservationService(DbContext context)
         {
-            _reservationRepository=new Repository<Reservation>(context)
+            _reservationRepository = new Repository<Reservation>(context);
         }
 
         public void CalculateRentFinalPrice(int id)
