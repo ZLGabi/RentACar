@@ -20,3 +20,5 @@ D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\EntityFramework.x
 D:\Training\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.csprojResolveAssemblyReference.cache
 D:\Training\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.dll
 D:\Training\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.pdb
+D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\System.ValueTuple.dll
+D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\System.ValueTuple.xml

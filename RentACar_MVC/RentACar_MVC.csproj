@@ -245,6 +245,12 @@
       <DependentUpon>201712281643321_updateReservationModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RentACar.Services\RentACar.Services.csproj">
+      <Project>{14246D19-293B-4D66-AFCF-97C81151DE42}</Project>
+      <Name>RentACar.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -2,22 +2,60 @@
 using RentACar.RepositoryInfrastructure;
 using RentACar.ServicesInfrastructure;
 using RentACar.ServicesInfrastructure.DTO;
-using System.Data.Entity;
-
+using System.Collections.Generic;
+ 
 namespace RentACar.Services
 {
     public class PortfolioService : IPortfoliosService
     {
-        private readonly Repository<Portfolio> _portfolioRepository;
-        public PortfolioService(DbContext context)
+        private readonly IRepository<Portfolio> _portfolioRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        public PortfolioService(IUnitOfWork unitOfWork)
         {
-            _portfolioRepository = new Repository<Portfolio>(context);
+            _unitOfWork = unitOfWork;
+            _portfolioRepository = _unitOfWork.GetRepository<Portfolio>();
+        }
+
+        public PortfolioDTO GetPortfolioById(int id)
+        {
+            var portfolio = _portfolioRepository.Get(id);
+            var portfolioDTO = AutoMapper.Mapper.Map<PortfolioDTO>(portfolio);
+            return portfolioDTO;
         }
 
         public PortfolioDTO GetPortfolioByName(string name)
         {
-            var portfolio = _portfolioRepository.Find(p=>p.Name==name);
-            return portfolio;
+            var portfolio = _portfolioRepository.Find(p => p.Name == name);
+            var portfolioDTO = AutoMapper.Mapper.Map<PortfolioDTO>(portfolio);
+            return portfolioDTO;
+        }
+
+        public IEnumerable<PortfolioDTO> GetPortfolios()
+        {
+            var portfolios = _portfolioRepository.GetAll();
+            var portfoliosDTO = AutoMapper.Mapper.Map<List<PortfolioDTO>>(portfolios);
+            return portfoliosDTO;
+        }
+
+        public void AddPortfolio(PortfolioDTO portfolioDTO)
+        {
+            var portfolio = AutoMapper.Mapper.Map<Portfolio>(portfolioDTO);
+            _portfolioRepository.Add(portfolio);
+            _unitOfWork.Commit();
+        }
+
+        public void UpdatePortfolio(PortfolioDTO portfolioDTO)
+        {
+            var portfolio = AutoMapper.Mapper.Map<Portfolio>(portfolioDTO);
+            _portfolioRepository.Update(portfolio);
+            _unitOfWork.Commit();
+        }
+
+        public void DeletePortfolio(PortfolioDTO portfolioDTO)
+        {
+            var portfolio = AutoMapper.Mapper.Map<Portfolio>(portfolioDTO);
+            _portfolioRepository.Delete(portfolio);
+            _unitOfWork.Commit();
         }
     }
 }

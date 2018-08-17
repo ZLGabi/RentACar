@@ -10,10 +10,11 @@ namespace RentACar.Services
     public class CarService : ICarService
     {
         private readonly IRepository<Car> _carRepository;
+        private readonly IUnitOfWork _unitOfWork;
         public CarService(IUnitOfWork unitOfWork)
         {
-            
-            _carRepository = unitOfWork.GetRepository<Car>();
+            _unitOfWork = unitOfWork;
+            _carRepository = _unitOfWork.GetRepository<Car>();
         }
 
         public IEnumerable<CarDTO> GetCarsByPortfolioId(int id)

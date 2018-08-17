@@ -36,7 +36,13 @@ namespace RentACar.RepositoryInfrastructure
             _dbSet.Add(entity);
         }
 
-        public void Remove(TEntity entity)
+        public void Update(TEntity entity)
+        {
+            _dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void Delete(TEntity entity)
         {
             _dbSet.Remove(entity);
         }
