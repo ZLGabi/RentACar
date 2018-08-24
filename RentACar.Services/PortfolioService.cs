@@ -16,23 +16,23 @@ namespace RentACar.Services
             _portfolioRepository = _unitOfWork.GetRepository<Portfolio>();
         }
 
-        public PortfolioDTO GetPortfolioById(int id)
+        public PortfolioDTO GetPortfolioById(int id, params string[] includeProperties)
         {
-            var portfolio = _portfolioRepository.Get(id);
+            var portfolio = _portfolioRepository.Get(id, includeProperties);
             var portfolioDTO = AutoMapper.Mapper.Map<PortfolioDTO>(portfolio);
             return portfolioDTO;
         }
 
-        public PortfolioDTO GetPortfolioByName(string name)
+        public IEnumerable<PortfolioDTO> GetPortfoliosByName(string name)
         {
-            var portfolio = _portfolioRepository.Find(p => p.Name == name);
-            var portfolioDTO = AutoMapper.Mapper.Map<PortfolioDTO>(portfolio);
-            return portfolioDTO;
+            var portfolios = _portfolioRepository.Find(p => p.Name.Contains(name), p=>p.Cars);
+            var portfoliosDTO = AutoMapper.Mapper.Map<IEnumerable<PortfolioDTO>>(portfolios);
+            return portfoliosDTO;
         }
 
         public IEnumerable<PortfolioDTO> GetPortfolios()
         {
-            var portfolios = _portfolioRepository.GetAll();
+            var portfolios = _portfolioRepository.GetAll(p=>p.Cars);
             var portfoliosDTO = AutoMapper.Mapper.Map<List<PortfolioDTO>>(portfolios);
             return portfoliosDTO;
         }

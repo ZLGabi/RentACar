@@ -1,7 +1,32 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@model IEnumerable<RentACar.ServicesInfrastructure.DTO.CarDTO>
 
-<p>Use this area to provide additional information.</p>
+<div class="row">
+    @foreach (var cars in Model)
+    {
+        <div class="col-md-3">
+            <div class="bg-secondary text-light mt-md-4 p-2">
+                <h5>Brand: @cars.Brand</h5>
+                <p>Description: @cars.Description</p>
+                <div>Model: @cars.Model | Type: @cars.Type</div>
+                <div>Price: @cars.Price</div>
+                <div>From portfolio: @cars.Portfolio.Name</div>
+            </div>
+        </div>
+    }
+    </div>       
+
+@*@model RentACar.ServicesInfrastructure.DTO.CarDTO
+
+<div class="row">
+    
+        <div class="col-sm-3">
+            <div style="background-color:beige; margin-top:15px; padding:2px 0px 2px 10px">
+                <h5>Brand: @Model.Brand</h5>
+                <p>Description: @Model.Description</p>
+                <div>Model: @Model.Model | Type: @Model.Type</div>
+                <div>Price: @Model.Price</div>
+                <div>From portfolio: @Model.Portfolio.Name</div>
+            </div>
+        </div>
+    
+</div>*@       

@@ -2,21 +2,53 @@
 using RentACar.RepositoryInfrastructure;
 using RentACar.ServicesInfrastructure;
 using System.Data.Entity;
+using RentACar.ServicesInfrastructure.DTO;
+using System;
 
 namespace RentACar.Services
 {
-    public class ReservationService :  IReservationService
+    public class ReservationService : IReservationService
     {
-        private readonly Repository<Reservation> _reservationRepository;
-        public ReservationService(DbContext context)
+        private readonly IRepository<Reservation> _reservationRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        public ReservationService(IUnitOfWork unitOfWork)
         {
-            _reservationRepository = new Repository<Reservation>(context);
+            _unitOfWork = unitOfWork;
+            _reservationRepository = _unitOfWork.GetRepository<Reservation>();
+        }
+
+        public ReservationDTO GetReservationbyId(int id, params string[] includeProperties)
+        {
+            var reservation = _reservationRepository.Get(id, includeProperties);
+            var reservationDTO = AutoMapper.Mapper.Map<ReservationDTO>(reservation);
+            return reservationDTO;
         }
 
         public void CalculateRentFinalPrice(int id)
         {
             var reservation = _reservationRepository.Get(id);
             reservation.FinalPrice = reservation.Car.Price * reservation.NumberOfDays;
+        }
+
+        public void AddReservation(ReservationDTO reservationDTO)
+        {
+            var reservation = AutoMapper.Mapper.Map<Reservation>(reservationDTO);
+            _reservationRepository.Add(reservation);
+            _unitOfWork.Commit();
+        }
+
+        public void UpdateReservation(ReservationDTO reservationDTO)
+        {
+            var reservation = AutoMapper.Mapper.Map<Reservation>(reservationDTO);
+            _reservationRepository.Update(reservation);
+            _unitOfWork.Commit();
+        }
+
+        public void DeleteReservation(ReservationDTO reservationDTO)
+        {
+            var reservation = AutoMapper.Mapper.Map<Reservation>(reservationDTO);
+            _reservationRepository.Delete(reservation);
+            _unitOfWork.Commit();
         }
     }
 }

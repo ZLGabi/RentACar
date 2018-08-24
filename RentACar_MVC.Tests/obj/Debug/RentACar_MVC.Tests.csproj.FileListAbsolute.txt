@@ -70,3 +70,16 @@ D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\EntityFramework.xml
 D:\Training\RentACar\RentACar_MVC.Tests\obj\Debug\RentACar_MVC.Tests.csprojResolveAssemblyReference.cache
 D:\Training\RentACar\RentACar_MVC.Tests\obj\Debug\RentACar_MVC.Tests.dll
 D:\Training\RentACar\RentACar_MVC.Tests\obj\Debug\RentACar_MVC.Tests.pdb
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\RentACar.Services.dll
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\RentACar.ServicesInfrastructure.dll
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\RentACar.RepositoryInfrastructure.dll
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\RentACar.DataContext.dll
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\AutoMapper.dll
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\System.ValueTuple.dll
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\RentACar.Services.pdb
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\RentACar.ServicesInfrastructure.pdb
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\RentACar.RepositoryInfrastructure.pdb
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\RentACar.DataContext.pdb
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\AutoMapper.pdb
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\AutoMapper.xml
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\System.ValueTuple.xml

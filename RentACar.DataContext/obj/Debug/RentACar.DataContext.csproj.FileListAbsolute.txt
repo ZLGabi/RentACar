@@ -19,3 +19,6 @@ D:\Training\RentACar\RentACar.DataContext\bin\Debug\EntityFramework.SqlServer.xm
 D:\Training\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.csprojResolveAssemblyReference.cache
 D:\Training\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.dll
 D:\Training\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.pdb
+D:\Training\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.Migrations.InitialCreate.resources
+D:\Training\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.csproj.GenerateResource.Cache
+D:\Training\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.Migrations.ChangeRelationships.resources

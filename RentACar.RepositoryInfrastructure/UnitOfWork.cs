@@ -1,18 +1,20 @@
-﻿using System;
+﻿using RentACar.DataContext;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
 namespace RentACar.RepositoryInfrastructure
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _context;
+        private readonly RentACarDbContext _context;
         private readonly Dictionary<Type, object> _repositories;
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork()
         {
-            _context = context;
+            _context = new RentACarDbContext();
+            _repositories = new Dictionary<Type, object>();
         }
 
         public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class

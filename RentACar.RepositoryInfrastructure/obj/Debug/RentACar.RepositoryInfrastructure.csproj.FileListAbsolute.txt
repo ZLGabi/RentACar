@@ -19,3 +19,5 @@ D:\Training\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\EntityFramework
 D:\Training\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.csprojResolveAssemblyReference.cache
 D:\Training\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.dll
 D:\Training\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.pdb
+D:\Training\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\RentACar.DataContext.dll
+D:\Training\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\RentACar.DataContext.pdb

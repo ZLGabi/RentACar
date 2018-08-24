@@ -6,9 +6,9 @@ namespace RentACar.RepositoryInfrastructure
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        TEntity Get(int id);
-        IEnumerable<TEntity> GetAll();
-        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
+        TEntity Get(int id, params string[] includeProperties);
+        IEnumerable<TEntity> GetAll(Expression<Func<TEntity, object>> selectors = null);
+        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> selector = null);
 
         void Add(TEntity entity);
         void Update(TEntity entity);
