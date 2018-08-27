@@ -6,7 +6,7 @@ using System.Collections.Generic;
  
 namespace RentACar.Services
 {
-    public class PortfolioService : IPortfoliosService
+    public class PortfolioService : IPortfolioService
     {
         private readonly IRepository<Portfolio> _portfolioRepository;
         private readonly IUnitOfWork _unitOfWork;

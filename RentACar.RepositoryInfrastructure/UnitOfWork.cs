@@ -8,12 +8,12 @@ namespace RentACar.RepositoryInfrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly RentACarDbContext _context;
+        private readonly DbContext _context;
         private readonly Dictionary<Type, object> _repositories;
 
-        public UnitOfWork()
+        public UnitOfWork(DbContext context)
         {
-            _context = new RentACarDbContext();
+            _context = context;
             _repositories = new Dictionary<Type, object>();
         }
 

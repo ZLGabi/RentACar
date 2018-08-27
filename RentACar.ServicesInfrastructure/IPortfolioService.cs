@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RentACar.ServicesInfrastructure
 {
-    public interface IPortfoliosService 
+    public interface IPortfolioService 
     {
         PortfolioDTO GetPortfolioById(int id, params string[] includeProperties);
         IEnumerable<PortfolioDTO> GetPortfoliosByName(string name);

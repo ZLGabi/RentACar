@@ -1,8 +1,5 @@
 ﻿using RentACar.Services.Mapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using RentACar_MVC.App_Start;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -15,6 +12,7 @@ namespace RentACar_MVC
         {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            IOC.Run();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             MapperConfiguration.Run();

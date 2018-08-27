@@ -83,3 +83,7 @@ D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\RentACar.DataContext.pdb
 D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\AutoMapper.pdb
 D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\AutoMapper.xml
 D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\System.ValueTuple.xml
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\Autofac.dll
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\Autofac.Integration.Mvc.dll
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\Autofac.xml
+D:\Training\RentACar\RentACar_MVC.Tests\bin\Debug\Autofac.Integration.Mvc.xml

@@ -3,9 +3,9 @@ using System.Data.Entity;
 
 namespace RentACar.DataContext
 {
-    public class RentACarDbContext : DbContext
+    public class RentACarDataContext : DbContext
     {
-        public RentACarDbContext(): base("RentACarDbContext")
+        public RentACarDataContext(): base("RentACarDataContext")
         {
         }
         public DbSet<Car> Cars { get; set; }

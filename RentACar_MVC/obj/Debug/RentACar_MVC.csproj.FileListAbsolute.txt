@@ -106,3 +106,7 @@ D:\Training\RentACar\RentACar_MVC\bin\RentACar.DataContext.pdb
 D:\Training\RentACar\RentACar_MVC\bin\AutoMapper.pdb
 D:\Training\RentACar\RentACar_MVC\bin\AutoMapper.xml
 D:\Training\RentACar\RentACar_MVC\bin\System.ValueTuple.xml
+D:\Training\RentACar\RentACar_MVC\bin\Autofac.dll
+D:\Training\RentACar\RentACar_MVC\bin\Autofac.Integration.Mvc.dll
+D:\Training\RentACar\RentACar_MVC\bin\Autofac.xml
+D:\Training\RentACar\RentACar_MVC\bin\Autofac.Integration.Mvc.xml

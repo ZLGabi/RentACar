@@ -7,16 +7,16 @@ namespace RentACar.DataContext.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<RentACar.DataContext.RentACarDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<RentACar.DataContext.RentACarDataContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(RentACar.DataContext.RentACarDbContext context)
+        protected override void Seed(RentACar.DataContext.RentACarDataContext context)
         {
-            RentACarDbContext dbContext = new RentACarDbContext();
+            RentACarDataContext dbContext = new RentACarDataContext();
             dbContext.Portfolios.AddOrUpdate(p => p.PortfolioId,
                 new Portfolio
                 {
