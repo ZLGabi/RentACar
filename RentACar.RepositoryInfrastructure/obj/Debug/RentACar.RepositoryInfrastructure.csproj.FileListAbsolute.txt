@@ -5,7 +5,6 @@ D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\EntityFramework
 D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\EntityFramework.SqlServer.dll
 D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\EntityFramework.xml
 D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\EntityFramework.SqlServer.xml
-D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.csprojResolveAssemblyReference.cache
 D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.csproj.CoreCompileInputs.cache
 D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.dll
 D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.pdb
@@ -21,3 +20,8 @@ D:\Training\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.Reposi
 D:\Training\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.pdb
 D:\Training\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\RentACar.DataContext.dll
 D:\Training\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\RentACar.DataContext.pdb
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\RentACar.DataContext.dll
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\RentACar.DataContext.pdb
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\bin\Debug\RentACar.DataContext.dll.config
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.csprojAssemblyReference.cache
+D:\Proiecte\RentACar\RentACar.RepositoryInfrastructure\obj\Debug\RentACar.RepositoryInfrastructure.csproj.CopyComplete

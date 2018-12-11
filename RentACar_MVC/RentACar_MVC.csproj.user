@@ -10,6 +10,7 @@
     <UseGlobalApplicationHostFile />
     <ToolsVersionPromptShown>3.0</ToolsVersionPromptShown>
     <WebStackScaffolding_ControllerDialogWidth>600</WebStackScaffolding_ControllerDialogWidth>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

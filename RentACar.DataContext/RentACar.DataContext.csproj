@@ -47,18 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201808201313464_InitialCreate.cs" />
-    <Compile Include="Migrations\201808201313464_InitialCreate.Designer.cs">
-      <DependentUpon>201808201313464_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808221335030_ChangeRelationships.cs" />
-    <Compile Include="Migrations\201808221335030_ChangeRelationships.Designer.cs">
-      <DependentUpon>201808221335030_ChangeRelationships.cs</DependentUpon>
+    <Compile Include="Migrations\201812092312196_InitialCreate.cs" />
+    <Compile Include="Migrations\201812092312196_InitialCreate.Designer.cs">
+      <DependentUpon>201812092312196_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Period.cs" />
+    <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Portfolio.cs" />
     <Compile Include="Models\Reservation.cs" />
+    <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="RentACarDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,11 +68,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808201313464_InitialCreate.resx">
-      <DependentUpon>201808201313464_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808221335030_ChangeRelationships.resx">
-      <DependentUpon>201808221335030_ChangeRelationships.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812092312196_InitialCreate.resx">
+      <DependentUpon>201812092312196_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

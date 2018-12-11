@@ -17,40 +17,17 @@ namespace RentACar.RepositoryInfrastructure
             _dbSet = context.Set<TEntity>();
         }
 
-        public TEntity Get(int id, params string[] includeProperties)
+        public TEntity Get(int id)
         {
-            var propertyName = ((System.Data.Entity.Infrastructure.IObjectContextAdapter)_context).ObjectContext
-        .CreateObjectSet<TEntity>().EntitySet.ElementType.KeyMembers.Single().Name;
-
-            var parameter = Expression.Parameter(typeof(TEntity), "e");
-            var predicate = Expression.Lambda<Func<TEntity, bool>>(
-                Expression.Equal(
-                    Expression.PropertyOrField(parameter, propertyName),
-                    Expression.Constant(id)),
-                parameter);
-
-            var query = _dbSet.AsQueryable();
-            if (includeProperties != null && includeProperties.Length > 0)
-                query = includeProperties.Aggregate(query, System.Data.Entity.QueryableExtensions.Include);
-            return query.FirstOrDefault(predicate);
+            return _dbSet.Find(id);
         }
 
-        public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, object>> selector = null)
+        public IQueryable<TEntity> GetAll()
         {
-            if (selector != null)
-            {
-                var propertyName = RepositoryHelper.GetPropertyName(selector);
-                return _dbSet.Include(propertyName).ToList();
-            }
-            return _dbSet.ToList();
+            return _dbSet;
         }
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> selector = null)
+        public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            if (selector != null)
-            {
-                var propertyName = RepositoryHelper.GetPropertyName(selector);
-                return _dbSet.Where(predicate).Include(propertyName);
-            }
             return _dbSet.Where(predicate);
         }
 

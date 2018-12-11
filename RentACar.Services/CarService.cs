@@ -19,49 +19,54 @@ namespace RentACar.Services
             _carRepository = _unitOfWork.GetRepository<Car>();
         }
 
-        public CarDTO GetCarById(int id, params string[] includeProperties)
+        public CarListDTO GetCarById(int id)
         {
-            var car = _carRepository.Get(id, includeProperties);
-            var carDTO = AutoMapper.Mapper.Map<CarDTO>(car);
+            var car = _carRepository.Get(id);
+            var carDTO = AutoMapper.Mapper.Map<CarListDTO>(car);
             return carDTO;
         }
 
-        public IEnumerable<CarDTO> GetCarsByPortfolioId(int id)
+        public IEnumerable<CarListDTO> GetCarsByPortfolioId(int id)
         {
-            var cars = _carRepository.Find(p => p.Portfolio.PortfolioId == id, p => p.Portfolio);
-            var carsDTO = AutoMapper.Mapper.Map<IEnumerable<CarDTO>>(cars);
+            var cars = _carRepository.Find(p => p.Portfolio.PortfolioId == id);
+            var carsDTO = AutoMapper.Mapper.Map<IEnumerable<CarListDTO>>(cars);
             return carsDTO;
         }
 
-        public IEnumerable<CarDTO> GetCarsByName(string name)
+        public IEnumerable<CarListDTO> GetCarsByName(string name)
         {
-            var cars = _carRepository.Find(c => (c.Brand.StartsWith(name) || c.Model.StartsWith(name)),p=>p.Portfolio);
-            var carsDTO = AutoMapper.Mapper.Map<IEnumerable<CarDTO>>(cars);
+            var cars = _carRepository.Find(c => (c.Brand.StartsWith(name) || c.Model.StartsWith(name)));
+            var carsDTO = AutoMapper.Mapper.Map<IEnumerable<CarListDTO>>(cars);
             return carsDTO;
         }
 
-        public IEnumerable<CarDTO> GetCars()
+        public CarDetailsDTO GetCarDetails(string name)
         {
-            var cars = _carRepository.GetAll(c=>c.Portfolio);
-            var carsDTO = AutoMapper.Mapper.Map<IEnumerable<CarDTO>>(cars);
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<CarListDTO> GetCars()
+        {
+            var cars = _carRepository.GetAll();
+            var carsDTO = AutoMapper.Mapper.Map<IEnumerable<CarListDTO>>(cars);
             return carsDTO;
         }
 
-        public void AddCar(CarDTO carDTO)
+        public void AddCar(CarCreationDTO carDTO)
         {
             var car = AutoMapper.Mapper.Map<Car>(carDTO);
             _carRepository.Add(car);
             _unitOfWork.Commit();
         }
 
-        public void UpdateCar(CarDTO carDTO)
+        public void UpdateCar(CarCreationDTO carDTO)
         {
             var car = AutoMapper.Mapper.Map<Car>(carDTO);
             _carRepository.Update(car);
             _unitOfWork.Commit();
         }
 
-        public void RemoveCar(CarDTO carDTO)
+        public void RemoveCar(CarCreationDTO carDTO)
         {
             var car = AutoMapper.Mapper.Map<Car>(carDTO);
             _carRepository.Delete(car);

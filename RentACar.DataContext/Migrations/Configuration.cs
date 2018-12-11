@@ -1,8 +1,6 @@
 namespace RentACar.DataContext.Migrations
 {
-    using Models;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -16,53 +14,10 @@ namespace RentACar.DataContext.Migrations
 
         protected override void Seed(RentACar.DataContext.RentACarDataContext context)
         {
-            RentACarDataContext dbContext = new RentACarDataContext();
-            dbContext.Portfolios.AddOrUpdate(p => p.PortfolioId,
-                new Portfolio
-                {
-                    PortfolioId = 1,
-                    Name = "MyPortfolio1",
-                    Cars = new List<Car> {
-                        new Car{Brand = "Dacia",
-                            Model = "Logan",
-                            Type = "Sedan",
-                            Description = "desc Dacia",
-                            Price = 50},
-                        new Car{
-                            Brand = "Volkswagen",
-                            Model = "Golf 5",
-                            Type = "Hatchback",
-                            Description = "desc Volkswagen",
-                            Price = 100},
-                        new Car{
-                            Brand = "Skoda",
-                            Model = "Fabia",
-                            Type = "Hatchback",
-                            Description = "desc Skoda",
-                            Price = 80}
-                    }
-                },
-                new Portfolio
-                {
-                    PortfolioId=2,
-                    Name = "MyPortfolio2",
-                    Cars = new List<Car> {
-                        new Car{
-                            Brand = "Audi",
-                            Model = "A4",
-                            Type = "Coupe",
-                            Description = "desc Audi",
-                            Price = 150},
-                        new Car{
-                            Brand = "Toyota",
-                            Model = "RAV-4",
-                            Type = "SUV",
-                            Description = "desc Toyota",
-                            Price = 200}
-                    }
-                });
+            //  This method will be called after migrating to the latest version.
 
-            dbContext.SaveChanges();
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data.
         }
     }
 }

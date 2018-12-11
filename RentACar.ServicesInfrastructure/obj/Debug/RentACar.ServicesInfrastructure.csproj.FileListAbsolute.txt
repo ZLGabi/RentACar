@@ -5,7 +5,6 @@ D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\EntityFramework.d
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.DataContext.pdb
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.DataContext.dll.config
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\EntityFramework.xml
-D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.csprojResolveAssemblyReference.cache
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.csproj.CoreCompileInputs.cache
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.dll
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.pdb
@@ -22,3 +21,10 @@ D:\Training\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.Services
 D:\Training\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.pdb
 D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\System.ValueTuple.dll
 D:\Training\RentACar\RentACar.ServicesInfrastructure\bin\Debug\System.ValueTuple.xml
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.RepositoryInfrastructure.dll
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\System.ValueTuple.dll
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.RepositoryInfrastructure.pdb
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.RepositoryInfrastructure.dll.config
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\System.ValueTuple.xml
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.csprojAssemblyReference.cache
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.csproj.CopyComplete

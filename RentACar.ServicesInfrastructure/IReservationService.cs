@@ -4,7 +4,7 @@ namespace RentACar.ServicesInfrastructure
 {
     public interface IReservationService
     {
-        ReservationDTO GetReservationbyId(int id, params string[] includeProperties);
+        ReservationDTO GetReservationbyId(int id);
         void CalculateRentFinalPrice(int id);
 
         void AddReservation(ReservationDTO reservationDTO);

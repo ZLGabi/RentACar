@@ -1,9 +1,7 @@
 ﻿using RentACar.DataContext.Models;
 using RentACar.RepositoryInfrastructure;
 using RentACar.ServicesInfrastructure;
-using System.Data.Entity;
 using RentACar.ServicesInfrastructure.DTO;
-using System;
 
 namespace RentACar.Services
 {
@@ -17,9 +15,9 @@ namespace RentACar.Services
             _reservationRepository = _unitOfWork.GetRepository<Reservation>();
         }
 
-        public ReservationDTO GetReservationbyId(int id, params string[] includeProperties)
+        public ReservationDTO GetReservationbyId(int id)
         {
-            var reservation = _reservationRepository.Get(id, includeProperties);
+            var reservation = _reservationRepository.Get(id);
             var reservationDTO = AutoMapper.Mapper.Map<ReservationDTO>(reservation);
             return reservationDTO;
         }
