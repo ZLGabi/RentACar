@@ -5,10 +5,9 @@ namespace RentACar.ServicesInfrastructure
     public interface IReservationService
     {
         ReservationDTO GetReservationbyId(int id);
-        void CalculateRentFinalPrice(int id);
+        float CalculateRentFinalPrice(int carPrice, int numberOfDays, int priceModifier);
 
         void AddReservation(ReservationDTO reservationDTO);
-        void UpdateReservation(ReservationDTO reservationDTO);
         void DeleteReservation(ReservationDTO reservationDTO);
     }
 }

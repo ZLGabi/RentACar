@@ -33,16 +33,18 @@ namespace RentACar.Services
             return carsDTO;
         }
 
-        public IEnumerable<CarListDTO> GetCarsByName(string name)
-        {
-            var cars = _carRepository.Find(c => (c.Brand.StartsWith(name) || c.Model.StartsWith(name)));
-            var carsDTO = AutoMapper.Mapper.Map<IEnumerable<CarListDTO>>(cars);
-            return carsDTO;
-        }
+        // public IEnumerable<CarListDTO> GetCarsByName(string name)
+        // {
+        //     var cars = _carRepository.Find(c => (c.Brand.StartsWith(name) || c.Model.StartsWith(name)));
+        //     var carsDTO = AutoMapper.Mapper.Map<IEnumerable<CarListDTO>>(cars);
+        //     return carsDTO;
+        // }
 
-        public CarDetailsDTO GetCarDetails(string name)
+        public CarDetailsDTO GetCarDetails(int id)
         {
-            throw new NotImplementedException();
+            var car = _carRepository.Get(id).Include(p => p.Photo).Include(r => r.Rewiew);
+            var carDTO = AutoMapper.Mapper.Map<CarDetailsDTO>(car);
+            return carDTO;
         }
 
         public IEnumerable<CarListDTO> GetCars()
@@ -55,6 +57,8 @@ namespace RentACar.Services
         public void AddCar(CarCreationDTO carDTO)
         {
             var car = AutoMapper.Mapper.Map<Car>(carDTO);
+            car.CreatedDate = DateTime.Now.Date.ToUniversalTime();
+            car.ModifiedDate = DateTime.Now.Date.ToUniversalTime();
             _carRepository.Add(car);
             _unitOfWork.Commit();
         }
@@ -62,6 +66,7 @@ namespace RentACar.Services
         public void UpdateCar(CarCreationDTO carDTO)
         {
             var car = AutoMapper.Mapper.Map<Car>(carDTO);
+            car.ModifiedDate = DateTime.Now.Date.ToUniversalTime();
             _carRepository.Update(car);
             _unitOfWork.Commit();
         }

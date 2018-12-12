@@ -6,7 +6,7 @@ namespace RentACar.ServicesInfrastructure
     public interface ICarService
     {
         CarListDTO GetCarById(int id);
-        CarDetailsDTO GetCarDetails(string name);
+        CarDetailsDTO GetCarDetails(int id);
         IEnumerable<CarListDTO> GetCarsByPortfolioId(int id);
         IEnumerable<CarListDTO> GetCars();
         void AddCar(CarCreationDTO carDTO);

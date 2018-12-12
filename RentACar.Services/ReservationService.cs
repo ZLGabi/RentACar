@@ -8,11 +8,13 @@ namespace RentACar.Services
     public class ReservationService : IReservationService
     {
         private readonly IRepository<Reservation> _reservationRepository;
+        private readonly IRepository<Period> _periodRepository;
         private readonly IUnitOfWork _unitOfWork;
         public ReservationService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _reservationRepository = _unitOfWork.GetRepository<Reservation>();
+            _periodRepository = _unitOfWork.GetRepository<Period>();
         }
 
         public ReservationDTO GetReservationbyId(int id)
@@ -22,23 +24,20 @@ namespace RentACar.Services
             return reservationDTO;
         }
 
-        public void CalculateRentFinalPrice(int id)
+        public float CalculateRentFinalPrice(int carPrice, int numberOfDays, int priceModifier)
         {
-            var reservation = _reservationRepository.Get(id);
-            reservation.FinalPrice = reservation.Car.Price * reservation.NumberOfDays;
+            var price = carPrice * numberOfDays;
+
+           return price - price*priceModifier/100;
         }
 
         public void AddReservation(ReservationDTO reservationDTO)
         {
+            var period = _periodRepository.GetAll().Where( p => (p.Days <= reservationDTO.NumberOfDays)).OrderByDescending(o => o.Days).FirstOrDefault();
+            reservationDTO.Period = period;
+            reservationDTO.FinalPrice = CalculateRentFinalPrice(reservationDTO.Car.price, reservationDTO.NumberOfDays, period.PriceModifier);
             var reservation = AutoMapper.Mapper.Map<Reservation>(reservationDTO);
             _reservationRepository.Add(reservation);
-            _unitOfWork.Commit();
-        }
-
-        public void UpdateReservation(ReservationDTO reservationDTO)
-        {
-            var reservation = AutoMapper.Mapper.Map<Reservation>(reservationDTO);
-            _reservationRepository.Update(reservation);
             _unitOfWork.Commit();
         }
 

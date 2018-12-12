@@ -11,5 +11,6 @@ namespace RentACar.ServicesInfrastructure.DTO
         public DateTime EndDate { get; set; }
         public int NumberOfDays { get; set; }
         public CarReservationDTO Car { get; set; }
+        public PeriodDTO Period { get; set; }
     }
 }
