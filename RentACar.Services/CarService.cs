@@ -5,6 +5,7 @@ using RentACar.ServicesInfrastructure.DTO;
 using System.Data.Entity;
 using RentACar.DataContext.Models;
 using System;
+using System.Linq;
 
 namespace RentACar.Services
 {
@@ -42,7 +43,7 @@ namespace RentACar.Services
 
         public CarDetailsDTO GetCarDetails(int id)
         {
-            var car = _carRepository.Get(id).Include(p => p.Photo).Include(r => r.Rewiew);
+            var car = _carRepository.GetAll().Include(p => p.Photos).Include(r => r.Reviews).FirstOrDefault(c => c.CarId == id);
             var carDTO = AutoMapper.Mapper.Map<CarDetailsDTO>(car);
             return carDTO;
         }

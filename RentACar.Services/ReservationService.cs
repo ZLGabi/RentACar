@@ -2,6 +2,7 @@
 using RentACar.RepositoryInfrastructure;
 using RentACar.ServicesInfrastructure;
 using RentACar.ServicesInfrastructure.DTO;
+using System.Linq;
 
 namespace RentACar.Services
 {
@@ -34,8 +35,8 @@ namespace RentACar.Services
         public void AddReservation(ReservationDTO reservationDTO)
         {
             var period = _periodRepository.GetAll().Where( p => (p.Days <= reservationDTO.NumberOfDays)).OrderByDescending(o => o.Days).FirstOrDefault();
-            reservationDTO.Period = period;
-            reservationDTO.FinalPrice = CalculateRentFinalPrice(reservationDTO.Car.price, reservationDTO.NumberOfDays, period.PriceModifier);
+            reservationDTO.Period = AutoMapper.Mapper.Map<PeriodDTO>(period);
+            reservationDTO.FinalPrice = CalculateRentFinalPrice(reservationDTO.Car.Price, reservationDTO.NumberOfDays, period.PriceModifier);
             var reservation = AutoMapper.Mapper.Map<Reservation>(reservationDTO);
             _reservationRepository.Add(reservation);
             _unitOfWork.Commit();

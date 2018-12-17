@@ -60,6 +60,7 @@
     <Compile Include="ICarService.cs" />
     <Compile Include="IPortfolioService.cs" />
     <Compile Include="IReservationService.cs" />
+    <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

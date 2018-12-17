@@ -3,7 +3,8 @@ using RentACar.RepositoryInfrastructure;
 using RentACar.ServicesInfrastructure;
 using RentACar.ServicesInfrastructure.DTO;
 using System.Collections.Generic;
- 
+using System.Linq;
+
 namespace RentACar.Services
 {
     public class PortfolioService : IPortfolioService
@@ -25,7 +26,7 @@ namespace RentACar.Services
 
         public IEnumerable<PortfolioListDTO> GetPortfolios()
         {
-            var portfolios = _portfolioRepository.GetAll();
+            var portfolios = _portfolioRepository.GetAll().ToList();
             var portfoliosDTO = AutoMapper.Mapper.Map<List<PortfolioListDTO>>(portfolios);
             return portfoliosDTO;
         }

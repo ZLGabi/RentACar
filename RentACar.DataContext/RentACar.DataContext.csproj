@@ -51,6 +51,10 @@
     <Compile Include="Migrations\201812092312196_InitialCreate.Designer.cs">
       <DependentUpon>201812092312196_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812172221301_SmallChangeInReservation.cs" />
+    <Compile Include="Migrations\201812172221301_SmallChangeInReservation.Designer.cs">
+      <DependentUpon>201812172221301_SmallChangeInReservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Period.cs" />
@@ -70,6 +74,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201812092312196_InitialCreate.resx">
       <DependentUpon>201812092312196_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812172221301_SmallChangeInReservation.resx">
+      <DependentUpon>201812172221301_SmallChangeInReservation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

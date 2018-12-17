@@ -4,6 +4,7 @@ using RentACar.ServicesInfrastructure;
 using RentACar.ServicesInfrastructure.DTO;
 using System.Data.Entity;
 using RentACar.DataContext.Models;
+using System.Linq;
 
 namespace RentACar.Services
 {
@@ -30,27 +31,28 @@ namespace RentACar.Services
             return usersDTO;
         }
 
-        public void AddUser(UserDTO userDTO)
+        public void AddUser(UserDTO userDTO, string password)
         {
             var user = AutoMapper.Mapper.Map<User>(userDTO);
-           
-            _carRepository.Add(user);
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+            _userRepository.Add(user);
             _unitOfWork.Commit();
         }
 
         public void UpdateUser(UserDTO userDTO)
         {
             var user = AutoMapper.Mapper.Map<User>(userDTO);
-           
-            _carRepository.Update(user);
+            _userRepository.Update(user);
             _unitOfWork.Commit();
         }
 
         public void DeleteUser(UserDTO userDTO)
         {
             var user = AutoMapper.Mapper.Map<User>(userDTO);
-           
-            _carRepository.Delete(user);
+            _userRepository.Delete(user);
             _unitOfWork.Commit();
         }
 
@@ -63,9 +65,9 @@ namespace RentACar.Services
             }
         }
 
-        public async Task<bool> UserExists(string username)
+        public bool UserExists(string username)
         {
-            if (await _context.Users.AnyAsync(x => x.Username == username))
+            if (_userRepository.GetAll().Any(x => x.Username == username))
                 return true;
                 
             return false;

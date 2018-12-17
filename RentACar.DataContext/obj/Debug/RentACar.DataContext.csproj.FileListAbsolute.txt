@@ -25,3 +25,4 @@ D:\Proiecte\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.csprojA
 D:\Proiecte\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.csproj.CopyComplete
 D:\Proiecte\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.Migrations.InitialCreate.resources
 D:\Proiecte\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.csproj.GenerateResource.cache
+D:\Proiecte\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.Migrations.SmallChangeInReservation.resources

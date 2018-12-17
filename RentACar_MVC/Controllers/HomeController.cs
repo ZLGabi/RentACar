@@ -20,7 +20,7 @@ namespace RentACar_MVC.Controllers
         }
         public ActionResult Index()
         {
-                return View(_portfolioService.GetPortfoliosByName("Portfolio"));
+                return View(_portfolioService.GetPortfolios());
         }
 
         public ActionResult About()

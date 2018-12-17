@@ -26,6 +26,7 @@ namespace RentACar_MVC.App_Start
             builder.RegisterType<CarService>().As<ICarService>().InstancePerRequest();
             builder.RegisterType<PortfolioService>().As<IPortfolioService>().InstancePerRequest();
             builder.RegisterType<ReservationService>().As<IReservationService>().InstancePerRequest();
+            builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
 
             //Set the Dependency Resolver
             var container = builder.Build();

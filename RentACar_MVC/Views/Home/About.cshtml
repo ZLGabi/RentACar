@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RentACar.ServicesInfrastructure.DTO.CarDTO>
+﻿@*@model IEnumerable<RentACar.ServicesInfrastructure.DTO.CarDTO>
 
 <div class="row">
     @foreach (var cars in Model)
@@ -13,20 +13,20 @@
             </div>
         </div>
     }
-    </div>       
+</div>*@
 
 @*@model RentACar.ServicesInfrastructure.DTO.CarDTO
 
-<div class="row">
-    
-        <div class="col-sm-3">
-            <div style="background-color:beige; margin-top:15px; padding:2px 0px 2px 10px">
-                <h5>Brand: @Model.Brand</h5>
-                <p>Description: @Model.Description</p>
-                <div>Model: @Model.Model | Type: @Model.Type</div>
-                <div>Price: @Model.Price</div>
-                <div>From portfolio: @Model.Portfolio.Name</div>
+    <div class="row">
+
+            <div class="col-sm-3">
+                <div style="background-color:beige; margin-top:15px; padding:2px 0px 2px 10px">
+                    <h5>Brand: @Model.Brand</h5>
+                    <p>Description: @Model.Description</p>
+                    <div>Model: @Model.Model | Type: @Model.Type</div>
+                    <div>Price: @Model.Price</div>
+                    <div>From portfolio: @Model.Portfolio.Name</div>
+                </div>
             </div>
-        </div>
-    
-</div>*@       
+
+    </div>*@       

@@ -7,5 +7,6 @@
         public string Email { get; set; }
         public int PhoneNumber { get; set; }
         public PhotoDTO Photo { get; set; }
+        public RoleDTO Role { get; set; }
     }
 }
