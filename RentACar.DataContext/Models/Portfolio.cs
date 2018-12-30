@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RentACar.DataContext.Models
 {
@@ -10,8 +11,7 @@ namespace RentACar.DataContext.Models
         public string Description { get; set; }
 
         public virtual ICollection<Car> Cars { get; set; }
-
-        [Required]
-        public virtual Photo Photo { get; set; }
+        
+        public virtual PortfolioPhoto Photo { get; set; }
     }
 }

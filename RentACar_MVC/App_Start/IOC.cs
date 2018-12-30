@@ -1,10 +1,11 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Microsoft.AspNet.Identity.EntityFramework;
 using RentACar.DataContext;
+using RentACar.DataContext.Models;
 using RentACar.RepositoryInfrastructure;
 using RentACar.Services;
 using RentACar.ServicesInfrastructure;
-using System.Data.Entity;
 using System.Web.Mvc;
 
 namespace RentACar_MVC.App_Start
@@ -20,7 +21,7 @@ namespace RentACar_MVC.App_Start
 
             //Register DB connection
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            builder.Register<DbContext>(c => new RentACarDataContext());
+            builder.Register<IdentityDbContext<User>>(c => new RentACarDataContext());
 
             //Register Services
             builder.RegisterType<CarService>().As<ICarService>().InstancePerRequest();

@@ -33,27 +33,27 @@ namespace RentACar.Services
 
         public void AddUser(UserDTO userDTO, string password)
         {
-            var user = AutoMapper.Mapper.Map<User>(userDTO);
-            byte[] passwordHash, passwordSalt;
-            CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
-            _userRepository.Add(user);
-            _unitOfWork.Commit();
+            //var user = AutoMapper.Mapper.Map<User>(userDTO);
+            //byte[] passwordHash, passwordSalt;
+            //CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            //user.PasswordHash = passwordHash;
+            //user.PasswordSalt = passwordSalt;
+            //_userRepository.Add(user);
+            //_unitOfWork.Commit();
         }
 
         public void UpdateUser(UserDTO userDTO)
         {
-            var user = AutoMapper.Mapper.Map<User>(userDTO);
-            _userRepository.Update(user);
-            _unitOfWork.Commit();
+            //var user = AutoMapper.Mapper.Map<User>(userDTO);
+            //_userRepository.Update(user);
+            //_unitOfWork.Commit();
         }
 
         public void DeleteUser(UserDTO userDTO)
         {
-            var user = AutoMapper.Mapper.Map<User>(userDTO);
-            _userRepository.Delete(user);
-            _unitOfWork.Commit();
+            //var user = AutoMapper.Mapper.Map<User>(userDTO);
+            //_userRepository.Delete(user);
+            //_unitOfWork.Commit();
         }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
@@ -67,8 +67,8 @@ namespace RentACar.Services
 
         public bool UserExists(string username)
         {
-            if (_userRepository.GetAll().Any(x => x.Username == username))
-                return true;
+            //if (_userRepository.GetAll().Any(x => x.Username == username))
+            //    return true;
                 
             return false;
         }

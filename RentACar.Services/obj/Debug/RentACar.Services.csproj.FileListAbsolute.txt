@@ -44,3 +44,7 @@ D:\Proiecte\RentACar\RentACar.Services\bin\Debug\AutoMapper.xml
 D:\Proiecte\RentACar\RentACar.Services\bin\Debug\System.ValueTuple.xml
 D:\Proiecte\RentACar\RentACar.Services\obj\Debug\RentACar.Services.csprojAssemblyReference.cache
 D:\Proiecte\RentACar\RentACar.Services\obj\Debug\RentACar.Services.csproj.CopyComplete
+D:\Proiecte\RentACar\RentACar.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Proiecte\RentACar\RentACar.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Proiecte\RentACar\RentACar.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Proiecte\RentACar\RentACar.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

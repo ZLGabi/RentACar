@@ -7,6 +7,6 @@
         public string Model { get; set; }
         public int Price { get; set; }
         public bool IsAvailable { get; set; }
-        public PhotoDTO MainPhoto { get; set; }
+        public CarPhotoDTO MainPhoto { get; set; }
     }
 }

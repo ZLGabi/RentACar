@@ -43,7 +43,7 @@ namespace RentACar.Services
 
         public CarDetailsDTO GetCarDetails(int id)
         {
-            var car = _carRepository.GetAll().Include(p => p.Photos).Include(r => r.Reviews).FirstOrDefault(c => c.CarId == id);
+            var car = _carRepository.GetAll().Include(p => p.Gallery).Include(r => r.Reviews).FirstOrDefault(c => c.CarId == id);
             var carDTO = AutoMapper.Mapper.Map<CarDetailsDTO>(car);
             return carDTO;
         }

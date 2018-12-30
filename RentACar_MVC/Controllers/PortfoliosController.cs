@@ -1,8 +1,4 @@
 ﻿using RentACar.ServicesInfrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RentACar_MVC.Controllers
@@ -26,7 +22,8 @@ namespace RentACar_MVC.Controllers
         // GET: Portfolios/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var portfolio = _portfolioService.GetPortfolioById(id);
+            return View(portfolio);
         }
 
         // GET: Portfolios/Create

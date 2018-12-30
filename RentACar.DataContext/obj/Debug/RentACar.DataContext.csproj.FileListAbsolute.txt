@@ -23,6 +23,9 @@ D:\Training\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.csproj.
 D:\Training\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.Migrations.ChangeRelationships.resources
 D:\Proiecte\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.csprojAssemblyReference.cache
 D:\Proiecte\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.csproj.CopyComplete
+D:\Proiecte\RentACar\RentACar.DataContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Proiecte\RentACar\RentACar.DataContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Proiecte\RentACar\RentACar.DataContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Proiecte\RentACar\RentACar.DataContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\Proiecte\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.Migrations.InitialCreate.resources
 D:\Proiecte\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.csproj.GenerateResource.cache
-D:\Proiecte\RentACar\RentACar.DataContext\obj\Debug\RentACar.DataContext.Migrations.SmallChangeInReservation.resources

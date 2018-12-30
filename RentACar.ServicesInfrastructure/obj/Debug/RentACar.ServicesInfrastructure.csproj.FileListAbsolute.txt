@@ -28,3 +28,7 @@ D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\RentACar.Reposito
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\System.ValueTuple.xml
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.csprojAssemblyReference.cache
 D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\obj\Debug\RentACar.ServicesInfrastructure.csproj.CopyComplete
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Proiecte\RentACar\RentACar.ServicesInfrastructure\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

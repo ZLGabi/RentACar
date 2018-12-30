@@ -20,12 +20,11 @@ namespace RentACar.DataContext.Models
         public int Price { get; set; }
         public bool IsAvailable { get; set; }
 
-        [Required]
-        public Photo MainPhoto { get; set; }
-        [InverseProperty("CarPhotos")]
-        public virtual ICollection<Photo> Photos { get; set; }
+        public virtual CarPhoto MainPhoto { get; set; }
+        
+        public virtual ICollection<CarGallery> Gallery { get; set; }
 
-        public int? PortfolioId { get; set; }
+        public int PortfolioId { get; set; }
         public virtual Portfolio Portfolio { get; set; }
         
         public virtual Reservation Reservation { get; set; }

@@ -1,10 +1,4 @@
-﻿using RentACar.RepositoryInfrastructure;
-using RentACar.Services;
-using RentACar.ServicesInfrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using RentACar.ServicesInfrastructure;
 using System.Web.Mvc;
 
 namespace RentACar_MVC.Controllers
@@ -25,7 +19,7 @@ namespace RentACar_MVC.Controllers
 
         public ActionResult About()
         {
-            return View(_carService.GetCars());
+            return View();
         }
 
         public ActionResult Contact()

@@ -8,7 +8,7 @@ namespace RentACar.DataContext.Models
 {
     public class Review
     {
-        public int Reviewid { get; set; }
+        public int ReviewId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
 

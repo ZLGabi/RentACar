@@ -10,6 +10,6 @@ namespace RentACar.ServicesInfrastructure.DTO
     {
         public int PortfolioId { get; set; }
         public string Name { get; set; }
-        public PhotoDTO Photo { get; set; }
+        public CarPhotoDTO Photo { get; set; }
     }
 }

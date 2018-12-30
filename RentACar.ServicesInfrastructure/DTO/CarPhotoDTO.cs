@@ -1,8 +1,8 @@
 ﻿namespace RentACar.ServicesInfrastructure.DTO
 {
-    public class PhotoDTO
+    public class CarPhotoDTO
     {
-        public int PhotoId { get; set; }
+        public int CarPhotoId { get; set; }
         public string Url { get; set; }
     }
 }

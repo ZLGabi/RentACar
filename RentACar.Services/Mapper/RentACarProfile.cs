@@ -12,16 +12,18 @@ namespace RentACar.Services.Mapper
             CreateMap<Car, CarListDTO>();
             CreateMap<Car, CarDetailsDTO>();
             CreateMap<Car, CarReservationDTO>();
-            CreateMap<Photo, PhotoDTO>();
+            CreateMap<CarPhoto, CarPhotoDTO>();
+            CreateMap<CarGallery, CarGalleryDTO>();
+            CreateMap<PortfolioPhoto, PortfolioPhotoDTO>();
+            CreateMap<UserPhoto, UserPhotoDTO>();
             CreateMap<Period, PeriodDTO>();
             CreateMap<Portfolio, PortfolioDTO>();
             CreateMap<Reservation, ReservationDTO>();
             CreateMap<Review, ReviewDTO>()
                 .ForMember(dest => dest.Reviewer, opt =>
                 {
-                    opt.MapFrom(src => src.User.Username);
+                    opt.MapFrom(src => src.User.UserName);
                 });
-            CreateMap<Role, RoleDTO>();
             CreateMap<User, UserDTO>();
         }
     }
