@@ -54,10 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationRoleManager.cs" />
+    <Compile Include="ApplicationRoleStore.cs" />
+    <Compile Include="ApplicationUserManager.cs" />
+    <Compile Include="ApplicationUserStore.cs" />
     <Compile Include="IdentityManager.cs" />
-    <Compile Include="Migrations\201812300034504_InitialCreate.cs" />
-    <Compile Include="Migrations\201812300034504_InitialCreate.Designer.cs">
-      <DependentUpon>201812300034504_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201901092331202_InitialCreate.cs" />
+    <Compile Include="Migrations\201901092331202_InitialCreate.Designer.cs">
+      <DependentUpon>201901092331202_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
@@ -68,6 +72,7 @@
     <Compile Include="Models\PortfolioPhoto.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserPhoto.cs" />
     <Compile Include="RentACarDataContext.cs" />
@@ -78,8 +83,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812300034504_InitialCreate.resx">
-      <DependentUpon>201812300034504_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901092331202_InitialCreate.resx">
+      <DependentUpon>201901092331202_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

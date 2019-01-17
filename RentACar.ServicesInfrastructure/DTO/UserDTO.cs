@@ -1,12 +1,15 @@
-﻿namespace RentACar.ServicesInfrastructure.DTO
+﻿using System.Web;
+
+namespace RentACar.ServicesInfrastructure.DTO
 {
     public class UserDTO
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
-        public int PhoneNumber { get; set; }
-        public CarPhotoDTO Photo { get; set; }
-        public RoleDTO Role { get; set; }
+        public string PhoneNumber { get; set; }
+        public UserPhotoDTO Photo { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }

@@ -17,7 +17,9 @@ namespace RentACar.ServicesInfrastructure.DTO
         public int NoDoors { get; set; }
         public int Price { get; set; }
         public bool IsAvailable { get; set; }
-        public CarGalleryDTO Gallery { get; set; }
+        public List<CarGalleryDTO> Gallery { get; set; }
         public List<ReviewDTO> Reviews { get; set; }
+        public int PortfolioId { get; set; }
+        public string PortfolioName { get; set; }
     }
 }

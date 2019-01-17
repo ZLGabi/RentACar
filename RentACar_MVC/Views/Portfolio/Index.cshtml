@@ -1,0 +1,21 @@
+﻿@model IEnumerable<RentACar.ServicesInfrastructure.DTO.PortfolioListDTO>
+
+<div class="card-deck justify-content-center">
+    @foreach (var portfolio in Model)
+    {
+        <div class="card col-lg-4 col-md-6 col-sm-12">
+            <img class="card-img-top" src="@portfolio.Photo.Url" alt="Portfolio image">
+            <div class="card-body">
+                <h5 class="card-title text-info">@portfolio.Name</h5>
+                <p class="card-text">@portfolio.Description</p>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+                <a href="@Url.Action("Details", new { id = portfolio.PortfolioId })" class="btn btn-primary">Show me</a>
+            </div>
+        </div>
+    }
+</div>
+
+@section Styles {
+    <link href="@Url.Content("~/Styles/Card.css")" rel="stylesheet" type="text/css" />
+}

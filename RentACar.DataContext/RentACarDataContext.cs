@@ -5,7 +5,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace RentACar.DataContext
 {
-    public class RentACarDataContext : IdentityDbContext<User>
+    public class RentACarDataContext : IdentityDbContext
     {
         public RentACarDataContext() : base("RentACarDataContext")
         {
@@ -34,17 +34,13 @@ namespace RentACar.DataContext
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
-            //modelBuilder.Entity<CarPhoto>().ToTable("CarPhotos");
-            //modelBuilder.Entity<PortfolioPhoto>().ToTable("PortfolioPhotos");
-            //modelBuilder.Entity<UserPhoto>().ToTable("UserPhotos");
-
             // Configure Asp Net Identity Tables
-            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<User>().ToTable("AspNetUsers");
             modelBuilder.Entity<User>().Property(u => u.PasswordHash).HasMaxLength(500);
             modelBuilder.Entity<User>().Property(u => u.SecurityStamp).HasMaxLength(500);
             modelBuilder.Entity<User>().Property(u => u.PhoneNumber).HasMaxLength(50);
 
-            modelBuilder.Entity<IdentityRole>().ToTable("Role");
+            modelBuilder.Entity<Role>().ToTable("AspNetRoles");
             modelBuilder.Entity<IdentityUserRole>().ToTable("UserRole");
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogin");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaim");

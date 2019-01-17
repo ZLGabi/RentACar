@@ -1,49 +1,7 @@
-﻿@model IEnumerable<RentACar.ServicesInfrastructure.DTO.PortfolioListDTO>
-
-<div class="row">
-    @foreach (var portfolios in Model)
-    {
-        <div class="col-md-3">
-            <div class="bg-secondary text-light mt-md-4 p-2">
-                <img src="@portfolios.Photo.Url" alt="Portfolio Photo" />
-                <h5>@portfolios.Name</h5>
-            </div>
-        </div>
-    }
+﻿<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4 text-info">Welcome</h1>
+        <hr class="my-4">
+        <p class="lead text-primary">A car rental service that meets your needs.</p>
+    </div>
 </div>
-
-@*@model IEnumerable<RentACar.ServicesInfrastructure.DTO.PortfolioDTO>
-
-    @foreach (var item in Model)
-    {
-        <div class="container mt-md-2">
-            <h4 class="bg-secondary text-light p-2">@item.Name</h4>
-            <div class="row m-2">
-                @foreach (var cars in item.Cars)
-                {
-                    <div class="col-md-4">
-                        <div class="bg-light p-2" >
-                            <h5>Brand: @cars.Brand</h5>
-                            <p>Description: @cars.Description</p>
-                            <div>Model: @cars.Model | Type: @cars.Type</div>
-                            <div>Price: @cars.Price</div>
-                       </div>
-                    </div>
-                }
-            </div>
-        </div>
-    }*@
-
-@*<div>
-        <h3>@Model.Name, @Model.PortfolioId</h3>
-        <div>
-            @foreach (var cars in Model.Cars)
-                {
-                <h5>Brand: @cars.Brand</h5>
-                    <p>Description: @cars.Description</p>
-                    <div>Model: @cars.Model | Type: @cars.Type</div>
-                    <div>Price: @cars.Price</div>
-            }
-        </div>
-        <hr />
-    </div>*@

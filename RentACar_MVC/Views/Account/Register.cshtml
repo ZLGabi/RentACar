@@ -1,0 +1,49 @@
+﻿@model RentACar.ServicesInfrastructure.DTO.UserDTO
+
+<h1 class="mt-5 title text-center">Register</h1>
+<hr />
+<div class="container">
+    <div class="d-flex justify-content-center">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, 
+            new { enctype = "multipart/form-data" }))
+        {
+        <div class="d-flex flex-column">
+            <div class="my-2">
+                @Html.LabelFor(m => m.Username)
+                <br />
+                @Html.EditorFor(m => m.Username)
+            </div>
+            <div class="my-2">
+                @Html.LabelFor(m => m.Email)
+                <br />
+                @Html.EditorFor(m => m.Email)
+            </div>
+            <div class="my-2">
+                @Html.LabelFor(m => m.PhoneNumber)
+                <br />
+                @Html.TextBoxFor(m => m.PhoneNumber)
+            </div>
+            <div class="my-2">
+                @Html.LabelFor(m => m.Photo)
+                <br />
+                @Html.TextBoxFor(m => m.Photo, new { type = "file" })
+            </div>
+            <div class="my-2">
+                @Html.LabelFor(m => m.Password)
+                <br />
+                @Html.PasswordFor(m => m.Password)
+            </div>
+            <div class="my-2">
+                @Html.LabelFor(m => m.ConfirmPassword)
+                <br />
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </div>
+            <input type="submit" class="btn btn-primary mt-3" value="Submit" />
+        </div>
+        }
+    </div>
+</div>
+
+@section Styles {
+    <link href="@Url.Content("~/Styles/Form.css")" rel="stylesheet" type="text/css" />
+}

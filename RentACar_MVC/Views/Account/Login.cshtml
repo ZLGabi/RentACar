@@ -1,0 +1,28 @@
+﻿@model RentACar.ServicesInfrastructure.DTO.UserLoginDTO
+
+<h1 class="mt-5 title text-center">Login</h1>
+<hr />
+<div class="container">
+    <div class="d-flex justify-content-center">
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            <div class="d-flex flex-column">
+                <div class="my-2">
+                    @Html.LabelFor(m => m.Username)
+                    <br />
+                    @Html.EditorFor(m => m.Username)
+                </div>
+                <div class="my-2">
+                    @Html.LabelFor(m => m.Password)
+                    <br />
+                    @Html.PasswordFor(m => m.Password)
+                </div>
+                <input type="submit" class="btn btn-primary mt-3" value="Submit" />
+            </div>
+        }
+    </div>
+</div>
+
+@section Styles {
+    <link href="@Url.Content("~/Styles/Form.css")" rel="stylesheet" type="text/css" />
+}

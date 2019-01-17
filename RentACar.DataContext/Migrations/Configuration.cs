@@ -115,6 +115,7 @@ namespace RentACar.DataContext.Migrations
             {
                 UserName = "Admin",
                 Email = "admin@domain.com",
+                PhoneNumber = "1234567890",
                 Photo = new UserPhoto { Url = "/images/users/Icon-user.png" }
             };
 

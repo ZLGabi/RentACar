@@ -1,17 +1,16 @@
-﻿using RentACar.DataContext;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 
 namespace RentACar.RepositoryInfrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _context;
+        private readonly IdentityDbContext _context;
         private readonly Dictionary<Type, object> _repositories;
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(IdentityDbContext context)
         {
             _context = context;
             _repositories = new Dictionary<Type, object>();

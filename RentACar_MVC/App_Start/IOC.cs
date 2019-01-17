@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using RentACar.DataContext;
 using RentACar.DataContext.Models;
@@ -21,13 +22,19 @@ namespace RentACar_MVC.App_Start
 
             //Register DB connection
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            builder.Register<IdentityDbContext<User>>(c => new RentACarDataContext());
+            builder.Register<IdentityDbContext>(c => new RentACarDataContext());
+
+            //Register UserManager and RoleManager
+            builder.RegisterType<ApplicationUserStore>().As<IUserStore<User>>().InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationRoleStore>().As<IRoleStore<Role, string>>().InstancePerRequest();
+            builder.RegisterType<ApplicationRoleManager>().AsSelf().InstancePerRequest();
 
             //Register Services
             builder.RegisterType<CarService>().As<ICarService>().InstancePerRequest();
             builder.RegisterType<PortfolioService>().As<IPortfolioService>().InstancePerRequest();
             builder.RegisterType<ReservationService>().As<IReservationService>().InstancePerRequest();
-            builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
+            builder.RegisterType<AccountService>().As<IAccountService>().InstancePerRequest();
 
             //Set the Dependency Resolver
             var container = builder.Build();

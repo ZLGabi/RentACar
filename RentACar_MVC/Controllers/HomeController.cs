@@ -5,16 +5,12 @@ namespace RentACar_MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IPortfolioService _portfolioService;
-        private readonly ICarService _carService;
-        public HomeController(IPortfolioService portfolioService, ICarService carService)
+        public HomeController()
         {
-            _portfolioService= portfolioService;
-            _carService = carService;
         }
         public ActionResult Index()
         {
-                return View(_portfolioService.GetPortfolios());
+                return View();
         }
 
         public ActionResult About()

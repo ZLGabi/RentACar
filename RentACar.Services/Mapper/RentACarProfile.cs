@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using RentACar.DataContext.Models;
 using RentACar.ServicesInfrastructure.DTO;
-using System.Linq;
 
 namespace RentACar.Services.Mapper
 {
@@ -9,8 +8,16 @@ namespace RentACar.Services.Mapper
     {
         public RentACarProfile()
         {
-            CreateMap<Car, CarListDTO>();
-            CreateMap<Car, CarDetailsDTO>();
+            CreateMap<Car, CarListDTO>()
+                .ForMember(dest => dest.PortfolioName, opt =>
+                {
+                    opt.MapFrom(src => src.Portfolio.Name);
+                });
+            CreateMap<Car, CarDetailsDTO>()
+                .ForMember(dest => dest.PortfolioName, opt =>
+            {
+                opt.MapFrom(src => src.Portfolio.Name);
+            });
             CreateMap<Car, CarReservationDTO>();
             CreateMap<CarPhoto, CarPhotoDTO>();
             CreateMap<CarGallery, CarGalleryDTO>();
@@ -25,6 +32,7 @@ namespace RentACar.Services.Mapper
                     opt.MapFrom(src => src.User.UserName);
                 });
             CreateMap<User, UserDTO>();
+            CreateMap<User, UserLoginDTO>();
         }
     }
 }
