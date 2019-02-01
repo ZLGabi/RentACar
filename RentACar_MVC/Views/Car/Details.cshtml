@@ -12,21 +12,28 @@
             <hr class="mr-0 ml-0" />
             <p>@Model.Description</p>
             <p>Price: @Model.Price€/day</p>
-            <div class="row pr-3 pl-3 mt-auto">
-                <div class="col-lg-7 align-self-center">
+            <div class="pr-3 pl-3 mt-auto">
+                <div class="row">
                     @if (Model.IsAvailable)
                     {
-                        <p class="card-text text-success font-available">Available</p>
+                        <p class="card-text text-success font-available align-self-center col-lg-7">Available</p>
+                        if (Context.User.IsInRole("Customer"))
+                        {
+                            <a href="@Url.Action("Create","Reservation", new { carId = Model.CarId })" class="btn btn-primary text-center px-0 col-lg-5">Rent</a>
+                        }
+                        else
+                        {
+                            <a href="#" class="btn btn-primary text-center disabled px-0 col-lg-5">Rent</a>
+                        }
                     }
                     else
                     {
-                        <p class="card-text text-danger font-available">Unavailable</p>
+                        <p class="card-text text-danger font-available align-self-center col-lg-7">Unavailable</p>
+                        <a href="#" class="btn btn-primary text-center disabled px-0 col-lg-5">Rent</a>
                     }
                 </div>
-                <a href="@Url.Action("Create","Reservation")" class="btn btn-primary text-center col-lg-5">Rent</a>
             </div>
         </div>
-       
     </div>
     <div class="col p-3 border border-dark">
         <div id="gallery" class="carousel slide" data-ride="carousel">
@@ -56,7 +63,7 @@
             </a>
         </div>
 
-        <div class="row m-4 font-available">
+        <div class="row m-4 font-options">
             <div class="m-2 col">
                 <div class="m-2 row">
                     <div class="col p-0 text-right">

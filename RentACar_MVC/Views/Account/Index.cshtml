@@ -1,0 +1,15 @@
+﻿
+<h1 class="title text-center">Members</h1>
+<hr class=" mb-5"/>
+<div class="row justify-content-between">
+    <div class="col-4 border-right border-dark mr-1">
+        <h3 class="title text-center">Managers</h3>
+        <hr />
+        @{Html.RenderAction("Managers", "Account");}
+    </div>
+    <div class="col-7 border-left border-info mr-auto">
+        <h3 class="title text-center">Customers</h3>
+        <hr />
+        @{Html.RenderAction("Customers", "Account");}
+    </div>
+</div>

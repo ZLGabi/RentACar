@@ -27,7 +27,7 @@ namespace RentACar.DataContext.Models
         public int PortfolioId { get; set; }
         public virtual Portfolio Portfolio { get; set; }
         
-        public virtual Reservation Reservation { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; }
     }

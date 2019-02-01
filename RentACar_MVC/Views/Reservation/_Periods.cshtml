@@ -1,0 +1,28 @@
+﻿@model List<RentACar.ServicesInfrastructure.DTO.PeriodDTO>
+
+<h5>Period Discounts</h5>
+<div class="row justify-content-center">
+    @foreach (var period in Model)
+    {
+        <div class="card d-flex flex-row border-dark bg-info border-2 text-center m-3 p-1">
+            <div class="card-group">
+                <div class="card border-right-0 border-dark">
+                    <div class="card-header text-light bg-dark h-50 d-flex justify-content-center align-items-center">
+                        <h6 class="card-title mb-0">Number of days</h6>
+                    </div>
+                    <div class="card-body bg-light h-50">
+                        <h3 data-day="@period.Days" class="card-text text-info periodDay">@period.Days</h3>
+                    </div>
+                </div>
+                <div class="card border-left-0 border-dark">
+                    <div class="card-header text-light bg-dark h-50 d-flex justify-content-center align-items-center">
+                        <h6 class="card-title mb-0">Discount</h6>
+                    </div>
+                    <div class="card-body bg-secondary h-50">
+                        <h3  data-discount="@period.PriceModifier" class="card-text text-info periodDiscount">@period.PriceModifier%</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

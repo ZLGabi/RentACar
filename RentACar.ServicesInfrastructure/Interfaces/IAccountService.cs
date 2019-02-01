@@ -8,6 +8,8 @@ namespace RentACar.ServicesInfrastructure
     {
         UserDTO GetUser(string id);
         List<UserDTO> GetUsers();
+        List<UserDTO> GetManagers();
+        List<UserDTO> GetCustomers();
         IdentityResult AddUser(UserDTO userDTO, string password);
         IdentityResult UpdateUser(UserDTO userDTO);
         IdentityResult DeleteUser(UserDTO userDTO);

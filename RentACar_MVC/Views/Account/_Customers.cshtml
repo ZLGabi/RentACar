@@ -1,0 +1,12 @@
+﻿@model List<RentACar.ServicesInfrastructure.DTO.UserDTO>
+
+<div class="col">
+    @foreach (var user in Model)
+    {
+    <div class="my-1 border d-inline-flex">
+        <p>@user.Username</p>
+        <p>@user.Email</p>
+        <p>@user.PhoneNumber</p>
+    </div>
+    }
+</div>

@@ -46,11 +46,7 @@ namespace RentACar.DataContext
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaim");
             modelBuilder.Entity<IdentityUserClaim>().Property(u => u.ClaimType).HasMaxLength(150);
             modelBuilder.Entity<IdentityUserClaim>().Property(u => u.ClaimValue).HasMaxLength(500);
-
-            modelBuilder.Entity<Reservation>()
-                .HasRequired(e => e.Period)
-                .WithOptional()
-                .Map(m => m.MapKey("PeriodId"));
+            
         }
     }
 }

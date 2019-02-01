@@ -1,11 +1,8 @@
 namespace RentACar.DataContext.Migrations
 {
     using RentACar.DataContext.Models;
-    using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<RentACar.DataContext.RentACarDataContext>
     {
@@ -27,7 +24,7 @@ namespace RentACar.DataContext.Migrations
                    {
                         new Car
                         {
-                            Brand = "Volksvagen",
+                            Brand = "Volkswagen",
                             Model = "Polo",
                             Description = "desc",
                             CreatedDate = System.DateTime.Now.Date,
@@ -126,12 +123,6 @@ namespace RentACar.DataContext.Migrations
             if (!success) return success;
 
             success = idManager.AddUserToRole(newUser.Id, "Admin");
-            if (!success) return success;
-
-            success = idManager.AddUserToRole(newUser.Id, "Manager");
-            if (!success) return success;
-
-            success = idManager.AddUserToRole(newUser.Id, "Customer");
             if (!success) return success;
 
             return success;

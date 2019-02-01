@@ -12,5 +12,7 @@ namespace RentACar.ServicesInfrastructure.DTO
         public string Brand { get; set; }
         public string Model { get; set; }
         public int Price { get; set; }
+        public bool IsAvailable { get; set; }
+        public CarPhotoDTO MainPhoto { get; set; }
     }
 }

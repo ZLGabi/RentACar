@@ -10,6 +10,7 @@ namespace RentACar.DataContext.Models
         public override string Id { get; set; }
         public virtual UserPhoto Photo { get; set; }
 
+        public virtual ICollection<Reservation> Reservations { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
     }
 }

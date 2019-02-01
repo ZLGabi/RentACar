@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<RentACar.ServicesInfrastructure.DTO.CarListDTO>
 
+<h1 class="title text-center">Cars</h1>
+<hr />
 <div class="card-deck justify-content-center">
     @foreach (var car in Model)
     {
         <div class="card col-lg-4 col-md-6 col-sm-12">
             <img class="card-img-top" src="@car.MainPhoto.Url" alt="Portfolio image">
             <div class="card-body">
-                <h5 class="card-title text-info">@car.Brand @car.Model</h5> 
+                <h5 class="card-title text-info">@car.Brand @car.Model</h5>
                 <small>
                     From
                     <a href="@Url.Action("Details","Portfolio", new { id = car.PortfolioId })">@car.PortfolioName</a>

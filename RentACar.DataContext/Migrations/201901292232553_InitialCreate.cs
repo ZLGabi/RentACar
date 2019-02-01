@@ -77,17 +77,22 @@ namespace RentACar.DataContext.Migrations
                 "dbo.Reservation",
                 c => new
                     {
-                        ReservationId = c.Int(nullable: false),
+                        ReservationId = c.Int(nullable: false, identity: true),
                         FinalPrice = c.Single(nullable: false),
                         BeginDate = c.DateTime(nullable: false),
                         EndDate = c.DateTime(nullable: false),
                         NumberOfDays = c.Int(nullable: false),
-                        PeriodId = c.Int(nullable: false),
+                        Status = c.String(),
+                        UserId = c.String(maxLength: 128),
+                        CarId = c.Int(nullable: false),
+                        PeriodId = c.Int(),
                     })
                 .PrimaryKey(t => t.ReservationId)
-                .ForeignKey("dbo.Car", t => t.ReservationId)
+                .ForeignKey("dbo.Car", t => t.CarId)
                 .ForeignKey("dbo.Period", t => t.PeriodId)
-                .Index(t => t.ReservationId)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId)
+                .Index(t => t.CarId)
                 .Index(t => t.PeriodId);
             
             CreateTable(
@@ -99,23 +104,6 @@ namespace RentACar.DataContext.Migrations
                         PriceModifier = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.PeriodId);
-            
-            CreateTable(
-                "dbo.Review",
-                c => new
-                    {
-                        ReviewId = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
-                        Content = c.String(),
-                        UserId = c.Int(),
-                        CarId = c.Int(),
-                        User_Id = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.ReviewId)
-                .ForeignKey("dbo.Car", t => t.CarId)
-                .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
-                .Index(t => t.CarId)
-                .Index(t => t.User_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -175,6 +163,22 @@ namespace RentACar.DataContext.Migrations
                 .Index(t => t.UserPhotoId);
             
             CreateTable(
+                "dbo.Review",
+                c => new
+                    {
+                        ReviewId = c.Int(nullable: false, identity: true),
+                        Title = c.String(),
+                        Content = c.String(),
+                        UserId = c.String(maxLength: 128),
+                        CarId = c.Int(),
+                    })
+                .PrimaryKey(t => t.ReviewId)
+                .ForeignKey("dbo.Car", t => t.CarId)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId)
+                .Index(t => t.CarId);
+            
+            CreateTable(
                 "dbo.UserRole",
                 c => new
                     {
@@ -206,11 +210,12 @@ namespace RentACar.DataContext.Migrations
             DropForeignKey("dbo.UserLogin", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.UserClaim", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.UserRole", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Review", "User_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.UserPhoto", "UserPhotoId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Review", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Review", "CarId", "dbo.Car");
+            DropForeignKey("dbo.Reservation", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.UserPhoto", "UserPhotoId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Reservation", "PeriodId", "dbo.Period");
-            DropForeignKey("dbo.Reservation", "ReservationId", "dbo.Car");
+            DropForeignKey("dbo.Reservation", "CarId", "dbo.Car");
             DropForeignKey("dbo.PortfolioPhoto", "PortfolioPhotoId", "dbo.Portfolio");
             DropForeignKey("dbo.Car", "PortfolioId", "dbo.Portfolio");
             DropForeignKey("dbo.CarPhoto", "CarPhotoId", "dbo.Car");
@@ -218,25 +223,26 @@ namespace RentACar.DataContext.Migrations
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.UserRole", new[] { "RoleId" });
             DropIndex("dbo.UserRole", new[] { "UserId" });
+            DropIndex("dbo.Review", new[] { "CarId" });
+            DropIndex("dbo.Review", new[] { "UserId" });
             DropIndex("dbo.UserPhoto", new[] { "UserPhotoId" });
             DropIndex("dbo.UserLogin", new[] { "UserId" });
             DropIndex("dbo.UserClaim", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Review", new[] { "User_Id" });
-            DropIndex("dbo.Review", new[] { "CarId" });
             DropIndex("dbo.Reservation", new[] { "PeriodId" });
-            DropIndex("dbo.Reservation", new[] { "ReservationId" });
+            DropIndex("dbo.Reservation", new[] { "CarId" });
+            DropIndex("dbo.Reservation", new[] { "UserId" });
             DropIndex("dbo.PortfolioPhoto", new[] { "PortfolioPhotoId" });
             DropIndex("dbo.CarPhoto", new[] { "CarPhotoId" });
             DropIndex("dbo.Car", new[] { "PortfolioId" });
             DropIndex("dbo.CarGallery", new[] { "CarId" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.UserRole");
+            DropTable("dbo.Review");
             DropTable("dbo.UserPhoto");
             DropTable("dbo.UserLogin");
             DropTable("dbo.UserClaim");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Review");
             DropTable("dbo.Period");
             DropTable("dbo.Reservation");
             DropTable("dbo.PortfolioPhoto");

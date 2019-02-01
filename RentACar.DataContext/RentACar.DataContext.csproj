@@ -59,9 +59,9 @@
     <Compile Include="ApplicationUserManager.cs" />
     <Compile Include="ApplicationUserStore.cs" />
     <Compile Include="IdentityManager.cs" />
-    <Compile Include="Migrations\201901092331202_InitialCreate.cs" />
-    <Compile Include="Migrations\201901092331202_InitialCreate.Designer.cs">
-      <DependentUpon>201901092331202_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201901292232553_InitialCreate.cs" />
+    <Compile Include="Migrations\201901292232553_InitialCreate.Designer.cs">
+      <DependentUpon>201901292232553_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
@@ -83,8 +83,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901092331202_InitialCreate.resx">
-      <DependentUpon>201901092331202_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901292232553_InitialCreate.resx">
+      <DependentUpon>201901292232553_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

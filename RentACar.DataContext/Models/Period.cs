@@ -8,6 +8,5 @@ namespace RentACar.DataContext.Models
         public int PeriodId { get; set; }
         public int Days { get; set; }
         public int PriceModifier { get; set; }
-        
     }
 }

@@ -1,0 +1,18 @@
+﻿@model RentACar.ServicesInfrastructure.DTO.CarReservationDTO
+<div class="row justify-content-center">
+    <div class="col-4">
+        <img class="w-100" src="@Model.MainPhoto.Url" alt="CarPhoto" />
+    </div>
+    <div class="col-4 align-self-center text-center">
+        <h5 class="text-info">@Model.Brand @Model.Model</h5>
+        <hr />
+        <div class="d-lg-inline-flex ">
+
+            <h5 class="pr-2">Base price:</h5>
+            <div class="d-inline-flex">
+                <h5 id="carPrice">@Model.Price</h5>
+                <h5>€/day</h5>
+            </div>
+        </div>
+    </div>
+</div>

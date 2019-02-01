@@ -43,14 +43,20 @@ namespace RentACar.Services
 
         public CarDetailsDTO GetCarDetails(int id)
         {
-            var car = _carRepository.GetAll().Include(x => x.Portfolio).Include(p => p.Gallery).Include(r => r.Reviews).FirstOrDefault(c => c.CarId == id);
+            var car = _carRepository.GetAll()
+                .Include(x => x.Portfolio)
+                .Include(p => p.Gallery)
+                .FirstOrDefault(c => c.CarId == id);
             var carDTO = AutoMapper.Mapper.Map<CarDetailsDTO>(car);
             return carDTO;
         }
 
         public IEnumerable<CarListDTO> GetCars()
         {
-            var cars = _carRepository.GetAll().Include(x => x.Portfolio).Include(i => i.MainPhoto).Include(p => p.Gallery).Include(r => r.Reviews);
+            var cars = _carRepository.GetAll()
+                .Include(x => x.Portfolio)
+                .Include(i => i.MainPhoto)
+                .Include(p => p.Gallery);
             var carsDTO = AutoMapper.Mapper.Map<IEnumerable<CarListDTO>>(cars);
             return carsDTO;
         }

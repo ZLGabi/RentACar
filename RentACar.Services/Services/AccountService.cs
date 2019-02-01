@@ -39,6 +39,22 @@ namespace RentACar.Services
             return usersDTO;
         }
 
+        public List<UserDTO> GetManagers()
+        {
+           // var roleId = _roleManager.FindByName("Manager")?.Id;
+            var managers = _userManager.Users.Where(u => u.Roles.Select(r => r.RoleId).Contains("Manager")).Include(p => p.Photo).ToList();
+            var managersDTO = AutoMapper.Mapper.Map<List<UserDTO>>(managers);
+            return managersDTO;
+        }
+
+        public List<UserDTO> GetCustomers()
+        {
+            var roleId = _roleManager.Roles.FirstOrDefault();
+            //var customers = _userManager.Users.Where(u => u.Roles.Select(r => r.RoleId).Contains(roleId)).Include(p => p.Photo).ToList();
+           // var customersDTO = AutoMapper.Mapper.Map<List<UserDTO>>(customers);
+            return null;
+        }
+
         public IdentityResult AddUser(UserDTO userDTO, string password)
         {
             var user = new User

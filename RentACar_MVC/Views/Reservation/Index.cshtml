@@ -1,0 +1,99 @@
+﻿@model List<RentACar.ServicesInfrastructure.DTO.ReservationDTO>
+
+<div class="container">
+    <h1 class="title text-center">Reservations</h1>
+    <hr />
+
+    @if (Model.Count() == 0)
+    {
+        <h6 class="text-center text-info">You didn't made a reservation yet.</h6>
+    }
+    else
+    {
+        foreach (var reservation in Model)
+        {
+            <div class="thin-padding bg-info border my-2">
+                <div class="d-inline-flex w-100 text-center bg-light border border-dark p-3">
+                    <div class="col-2 px-lg-3 px-md-2 px-sm-1">
+                        <div class="d-flex justify-content-center h-40">
+                            <h6 class="align-self-center mb-0">Car</h6>
+                        </div>
+                        <hr />
+                        <h6 class="text-secondary">@reservation.Car.Brand @reservation.Car.Model</h6>
+                    </div>
+                    <div class="col-2 px-lg-3 px-md-2 px-sm-1">
+                        <div class="d-flex justify-content-center h-40">
+                            <h6 class="align-self-center mb-0">Begin date</h6>
+                        </div>
+                        <hr />
+                        <h6 class="text-nowrap text-secondary">@reservation.BeginDate.ToString("dd/MM/yyyy")</h6>
+                    </div>
+                    <div class="col-2 px-lg-3 px-md-2 px-sm-1">
+                        <div class="d-flex justify-content-center h-40">
+                            <h6 class="align-self-center mb-0">End date</h6>
+                        </div>
+                        <hr />
+                        <h6 class="text-nowrap text-secondary">@reservation.EndDate.ToString("dd/MM/yyyy")</h6>
+                    </div>
+                    <div class="col-2 px-lg-3 px-md-2 px-sm-1">
+                        <div class="d-flex justify-content-center h-40">
+                            <h6 class="align-self-center mb-0">Number of days</h6>
+                        </div>
+                        <hr />
+                        <h6 class="text-secondary">@reservation.NumberOfDays</h6>
+                    </div>
+                    <div class="col-1 px-lg-3 px-md-2 px-sm-1">
+                        <div class="d-flex justify-content-center h-40">
+                            <h6 class="align-self-center mb-0">Price</h6>
+                        </div>
+                        <hr />
+                        <h6 class="text-secondary">@reservation.FinalPrice€</h6>
+                    </div>
+                    <div class="col-2 px-lg-3 px-md-2 px-sm-1">
+                        <div class="d-flex justify-content-center h-40">
+                            <h6 class="align-self-center mb-0">Status</h6>
+                        </div>
+                        <hr />
+                        @switch (reservation.Status)
+                        {
+                            case "Active":
+                                <h6 class="text-info">@reservation.Status</h6>
+                                break;
+                            case "Finished":
+                                <h6 class="text-success">@reservation.Status</h6>
+                                break;
+                            case "Canceled":
+                                <h6 class="text-danger">@reservation.Status</h6>
+                                break;
+                        }
+                    </div>
+                    <div class="col-2 offset-1 px-lg-3 px-md-2 px-sm-1 align-self-center  ml-auto">
+                        @if (reservation.Status == "Active")
+                        {
+                            using (Html.BeginForm("Cancel", "Reservation", new { id = reservation.ReservationId }))
+                            {
+                                @Html.HttpMethodOverride(HttpVerbs.Put)
+                                @Html.AntiForgeryToken()
+                                <button type="submit" 
+                                        class="btn btn-danger btn-size p-0  align-items-center justify-content-center d-flex">
+                                    <i class="fa fa-ban icon-font-size"></i>
+                                </button>
+                            }
+                        }
+                        else
+                        {
+                            <button disabled type="button" 
+                                    class="btn btn-danger btn-size p-0  align-items-center justify-content-center d-flex">
+                                <i class="fa fa-ban icon-font-size"></i>
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@section Styles {
+    <link href="@Url.Content("~/Styles/Reservations.css")" rel="stylesheet" type="text/css" />
+}

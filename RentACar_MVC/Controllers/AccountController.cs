@@ -14,6 +14,26 @@ namespace RentACar_MVC.Controllers
             _userService = userService;
         }
 
+        [Authorize(Roles = "Admin")]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult Managers()
+        {
+            var managers = _userService.GetManagers();
+            return PartialView("_Managers", managers);
+        }
+
+        [ChildActionOnly]
+        public ActionResult Customers()
+        {
+            var customers = _userService.GetCustomers();
+            return PartialView("_Customers",customers);
+        }
+
         public ActionResult Login()
         {
             return View();
