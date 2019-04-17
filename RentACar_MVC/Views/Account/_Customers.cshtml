@@ -1,12 +1,27 @@
 ﻿@model List<RentACar.ServicesInfrastructure.DTO.UserDTO>
 
-<div class="col">
-    @foreach (var user in Model)
+<div class="col mb-3">
+    @if (Model.Count > 0)
     {
-    <div class="my-1 border d-inline-flex">
-        <p>@user.Username</p>
-        <p>@user.Email</p>
-        <p>@user.PhoneNumber</p>
-    </div>
+        foreach (var user in Model)
+        {
+            <div class="my-1 border d-inline-flex w-100">
+                <p class="col-3 my-2 d-flex align-items-center justify-content-center">@user.Username</p>
+                <p class="col-3 my-2 d-flex align-items-center justify-content-center">@user.Email</p>
+                <p class="col-3 my-2 d-flex align-items-center justify-content-center">@user.PhoneNumber</p>
+                <div class="col-3 align-items-center justify-content-end d-flex">
+                    <button type="button"
+                            class="btn btn-danger btn-size p-0 align-items-center justify-content-center d-flex">
+                        <i class="fa fa-ban icon-font-size"></i>
+                    </button>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="my-1 border">
+            <p class="text-center m-0">There are no customers.</p>
+        </div>
     }
 </div>

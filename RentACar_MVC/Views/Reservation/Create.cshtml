@@ -117,7 +117,7 @@
             function calculatePrice(days) {
                 var price = $('#carPrice').text() * days;
             var discount = getDiscount(days);
-                $('#finalPrice').val((price - discount)+'€/day');
+                $('#finalPrice').val((price - discount)+'€');
         }
 
             $('#reservationForm .input-daterange').datepicker({

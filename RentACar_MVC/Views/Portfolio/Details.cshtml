@@ -21,24 +21,27 @@ else
     <div class="card-deck">
         @foreach (var car in Model.Cars)
         {
-            <div class="card">
-                <img class="card-img-top" src="@car.MainPhoto.Url" alt="Portfolio image">
-                <div class="card-body">
-                    <h5 class="card-title text-info">@car.Brand @car.Model</h5>
-                    <p class="card-text">Price: @car.Price€</p>
-                </div>
-                <div class="card-footer bg-transparent row border-0 m-0">
-                    <div class="col-md-8 align-self-center">
-                        @if (car.IsAvailable)
-                        {
-                            <p class="card-text text-success font-available">Available</p>
-                        }
-                        else
-                        {
-                            <p class="card-text text-danger font-available">Unavailable</p>
-                        }
+            <div class="col-lg-4 col-md-6 col-sm-12 pb-3 pt-3">
+                <div class="card">
+                    <img class="card-img-top" src="@car.MainPhoto.Url" alt="Portfolio image">
+                    <div class="card-body">
+                        <h5 class="card-title text-info">@car.Brand @car.Model</h5>
+                        <p class="card-text">Price: @car.Price€</p>
                     </div>
-                    <a href="@Url.Action("Details", "Car", new { id = car.CarId })" class="btn btn-primary col-md-4">Details</a>
+                    <div class="card-footer bg-transparent row border-0 m-0">
+                        <div class="col-7 align-self-center">
+                            @if (car.IsAvailable)
+                            {
+                                <p class="card-text text-success font-available">Available</p>
+                            }
+                            else
+                            {
+                                <p class="card-text text-danger font-available">Unavailable</p>
+                            }
+                        </div>
+                        <a href="@Url.Action("Details", "Car", new { id = car.CarId })" 
+                           class="btn btn-primary col-5 text-nowrap pl-0 pr-0 pt-3 pb-3">Details</a>
+                    </div>
                 </div>
             </div>
         }

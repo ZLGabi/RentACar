@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using Microsoft.AspNet.Identity;
 using RentACar.DataContext.Models;
 using RentACar.ServicesInfrastructure.DTO;
-using System.Web;
 
 namespace RentACar.Services.Mapper
 {
@@ -22,6 +20,11 @@ namespace RentACar.Services.Mapper
             });
             CreateMap<Car, CarReservationDTO>();
             CreateMap<CarPhoto, CarPhotoDTO>();
+            CreateMap<CarPhotoDTO, CarPhoto>()
+                .ForMember(dest => dest.CarMainPhoto, opt =>
+                {
+                    opt.Ignore();
+                });
             CreateMap<CarGallery, CarGalleryDTO>();
             CreateMap<PortfolioPhoto, PortfolioPhotoDTO>();
             CreateMap<UserPhoto, UserPhotoDTO>();
@@ -43,7 +46,7 @@ namespace RentACar.Services.Mapper
             CreateMap<Reservation, ReservationDTO>()
                 .ForMember(dest => dest.Username, opt =>
                 {
-                    opt.MapFrom(src => src.User.UserName);
+                    opt.MapFrom(src => src.User.Username);
                 });
             CreateMap<ReservationDTO, Reservation>()
                 .ForMember(dest => dest.CarId, opt =>
@@ -57,53 +60,15 @@ namespace RentACar.Services.Mapper
             CreateMap<Review, ReviewDTO>()
                 .ForMember(dest => dest.Reviewer, opt =>
                 {
-                    opt.MapFrom(src => src.User.UserName);
+                    opt.MapFrom(src => src.User.Username);
                 });
             CreateMap<User, UserDTO>();
-            CreateMap<User, UserLoginDTO>();
-            CreateMap<Car, CarReservationDTO>();
-                CreateMap<CarReservationDTO, Car>()
-                .ForMember(dest => dest.CarId, opt =>
-                {
-                    opt.MapFrom(src => src.CarId);
-                })
-                .ForMember(dest => dest.CreatedDate, opt =>
+            CreateMap<UserDTO, User>()
+                .ForMember(dest => dest.PasswordHash, opt =>
                 {
                     opt.Ignore();
                 })
-                .ForMember(dest => dest.ModifiedDate, opt =>
-                {
-                    opt.Ignore();
-                })
-                .ForMember(dest => dest.Description, opt =>
-                {
-                    opt.Ignore();
-                })
-                .ForMember(dest => dest.Fuel, opt =>
-                {
-                    opt.Ignore();
-                })
-                .ForMember(dest => dest.Gallery, opt =>
-                {
-                    opt.Ignore();
-                })
-                .ForMember(dest => dest.NoDoors, opt =>
-                {
-                    opt.Ignore();
-                })
-                .ForMember(dest => dest.Transmision, opt =>
-                {
-                    opt.Ignore();
-                })
-                .ForMember(dest => dest.Type, opt =>
-                {
-                    opt.Ignore();
-                })
-                .ForMember(dest => dest.Portfolio, opt =>
-                {
-                    opt.Ignore();
-                })
-                .ForMember(dest => dest.PortfolioId, opt =>
+                .ForMember(dest => dest.PasswordSalt, opt =>
                 {
                     opt.Ignore();
                 })
@@ -114,7 +79,66 @@ namespace RentACar.Services.Mapper
                 .ForMember(dest => dest.Reviews, opt =>
                 {
                     opt.Ignore();
+                })
+                .ForMember(dest => dest.Roles, opt =>
+                {
+                    opt.Ignore();
                 });
+            CreateMap<User, UserLoginDTO>();
+            CreateMap<Car, CarReservationDTO>();
+            CreateMap<CarReservationDTO, Car>()
+            .ForMember(dest => dest.CarId, opt =>
+            {
+                opt.MapFrom(src => src.CarId);
+            })
+            .ForMember(dest => dest.CreatedDate, opt =>
+            {
+                opt.Ignore();
+            })
+            .ForMember(dest => dest.ModifiedDate, opt =>
+            {
+                opt.Ignore();
+            })
+            .ForMember(dest => dest.Description, opt =>
+            {
+                opt.Ignore();
+            })
+            .ForMember(dest => dest.Fuel, opt =>
+            {
+                opt.Ignore();
+            })
+            .ForMember(dest => dest.Gallery, opt =>
+            {
+                opt.Ignore();
+            })
+            .ForMember(dest => dest.NoDoors, opt =>
+            {
+                opt.Ignore();
+            })
+            .ForMember(dest => dest.Transmision, opt =>
+            {
+                opt.Ignore();
+            })
+            .ForMember(dest => dest.Type, opt =>
+            {
+                opt.Ignore();
+            })
+            .ForMember(dest => dest.Portfolio, opt =>
+            {
+                opt.Ignore();
+            })
+            .ForMember(dest => dest.PortfolioId, opt =>
+            {
+                opt.Ignore();
+            })
+            .ForMember(dest => dest.Reservations, opt =>
+            {
+                opt.Ignore();
+            })
+            .ForMember(dest => dest.Reviews, opt =>
+            {
+                opt.Ignore();
+            });
         }
     }
 }

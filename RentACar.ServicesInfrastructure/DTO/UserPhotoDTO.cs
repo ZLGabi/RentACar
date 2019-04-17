@@ -8,7 +8,7 @@ namespace RentACar.ServicesInfrastructure.DTO
 {
     public class UserPhotoDTO
     {
-        public int UserPhotoId { get; set; }
+        public string UserPhotoId { get; set; }
         public string Url { get; set; }
     }
 }

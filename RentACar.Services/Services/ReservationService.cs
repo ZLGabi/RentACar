@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using RentACar.DataContext;
-using RentACar.DataContext.Models;
+﻿using RentACar.DataContext.Models;
 using RentACar.RepositoryInfrastructure;
 using RentACar.ServicesInfrastructure;
 using RentACar.ServicesInfrastructure.DTO;
@@ -16,22 +14,22 @@ namespace RentACar.Services
         private readonly IRepository<Reservation> _reservationRepository;
         private readonly IRepository<Period> _periodRepository;
         private readonly IRepository<Car> _carRepository;
+        private readonly IRepository<User> _userRepository;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ApplicationUserManager _userManager;
 
-        public ReservationService(IUnitOfWork unitOfWork, ApplicationUserManager userManager)
+        public ReservationService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _userManager = userManager;
             _reservationRepository = _unitOfWork.GetRepository<Reservation>();
             _periodRepository = _unitOfWork.GetRepository<Period>();
             _carRepository = _unitOfWork.GetRepository<Car>();
+            _userRepository = _unitOfWork.GetRepository<User>();
         }
 
         public ReservationDTO GetReservation(string username, int id)
         {
             var reservation = _reservationRepository.GetAll().AsNoTracking().Include(c => c.Car).Include(p => p.Period)
-                .FirstOrDefault(r => r.ReservationId == id && r.User.UserName == username);
+                .FirstOrDefault(r => r.ReservationId == id && r.User.Username == username);
             var reservationDTO = AutoMapper.Mapper.Map<ReservationDTO>(reservation);
             return reservationDTO;
         }
@@ -39,7 +37,7 @@ namespace RentACar.Services
         public List<ReservationDTO> GetReservations(string username)
         {
             var reservations = _reservationRepository.GetAll().Include(c => c.Car).Include(p => p.Period)
-                .Where(r => r.User.UserName == username).ToList();
+                .Where(r => r.User.Username == username).ToList();
             var reservationsDTO = AutoMapper.Mapper.Map<List<ReservationDTO>>(reservations);
             return reservationsDTO;
         }
@@ -77,8 +75,8 @@ namespace RentACar.Services
             reservationCreationDTO.Car.IsAvailable = false;
             ChangeCarAvailability(reservationCreationDTO.Car.CarId, reservationCreationDTO.Car.IsAvailable);
             reservationCreationDTO.FinalPrice = CalculateRentFinalPrice(car.Price, reservationCreationDTO.NumberOfDays, priceModifier);
-            var user = _userManager.FindById(HttpContext.Current.User.Identity.GetUserId());
-            reservationCreationDTO.UserId = user.Id;
+            var user = _userRepository.GetAll().FirstOrDefault(u => u.Username==HttpContext.Current.User.Identity.Name);
+            reservationCreationDTO.UserId = user.UserId;
             reservationCreationDTO.User = AutoMapper.Mapper.Map<UserDTO>(user);
             reservationCreationDTO.Status = "Active";
             var reservation = AutoMapper.Mapper.Map<Reservation>(reservationCreationDTO);
@@ -97,10 +95,10 @@ namespace RentACar.Services
         {
             ChangeCarAvailability(reservationDTO.Car.CarId, true);
             reservationDTO.Status = "Canceled";
-            var user = _userManager.FindById(HttpContext.Current.User.Identity.GetUserId());
+            var user = _userRepository.GetAll().FirstOrDefault(u => u.Username == HttpContext.Current.User.Identity.Name);
             var reservation = AutoMapper.Mapper.Map<Reservation>(reservationDTO);
             reservation.User = user;
-            reservation.UserId = user.Id;
+            reservation.UserId = user.UserId;
             reservation.Car = null;
             _reservationRepository.Update(reservation);
             _unitOfWork.Commit();

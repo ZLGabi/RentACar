@@ -13,7 +13,6 @@ namespace RentACar.DataContext.Migrations
 
         protected override void Seed(RentACar.DataContext.RentACarDataContext context)
         {
-            this.AddUserAndRoles();
             context.Portfolios.AddOrUpdate(p => p.Name,
                new Portfolio
                {
@@ -26,7 +25,7 @@ namespace RentACar.DataContext.Migrations
                         {
                             Brand = "Volkswagen",
                             Model = "Polo",
-                            Description = "desc",
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             CreatedDate = System.DateTime.Now.Date,
                             ModifiedDate = System.DateTime.Now.Date,
                             Price = 20,
@@ -41,12 +40,42 @@ namespace RentACar.DataContext.Migrations
                         {
                             Brand = "Skoda",
                             Model = "Fabia",
-                            Description = "desc",
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             CreatedDate = System.DateTime.Now.Date,
                             ModifiedDate = System.DateTime.Now.Date,
-                            Price = 20,
+                            Price = 19,
                             Type = "Hatchback",
                             Fuel = "Petrol",
+                            Transmision = "Manual",
+                            NoDoors = 5,
+                            IsAvailable = true,
+                            MainPhoto = new CarPhoto { Url = "/images/cars/main/small.jpg" }
+                        },
+                        new Car
+                        {
+                            Brand = "Opel",
+                            Model = "Astra H",
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                            CreatedDate = System.DateTime.Now.Date,
+                            ModifiedDate = System.DateTime.Now.Date,
+                            Price = 18,
+                            Type = "Hatchback",
+                            Fuel = "Petrol",
+                            Transmision = "Manual",
+                            NoDoors = 5,
+                            IsAvailable = true,
+                            MainPhoto = new CarPhoto { Url = "/images/cars/main/small.jpg" }
+                        },
+                        new Car
+                        {
+                            Brand = "Dacia",
+                            Model = "Sandero",
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                            CreatedDate = System.DateTime.Now.Date,
+                            ModifiedDate = System.DateTime.Now.Date,
+                            Price = 15,
+                            Type = "Hatchback",
+                            Fuel = "Diesel",
                             Transmision = "Manual",
                             NoDoors = 5,
                             IsAvailable = true,
@@ -91,41 +120,49 @@ namespace RentACar.DataContext.Migrations
                 }
                 );
 
+
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash("Password1", out passwordHash, out passwordSalt);
+            context.Users.AddOrUpdate(u => u.Username,
+                new User()
+                {
+                    Username = "Admin",
+                    Email = "admin@domain.com",
+                    PhoneNumber = "1234567890",
+                    Photo = new UserPhoto { Url = "/images/users/Icon-user.png" },
+                    PasswordHash = passwordHash,
+                    PasswordSalt = passwordSalt,
+                    Roles = new List<Role>()
+                    {
+                         new Role
+                         {
+                             Name = "Admin",
+                             Description = "Manages the accounts."
+                         }
+                    }
+                }
+                );
+            context.Roles.AddOrUpdate(r => r.Name,
+            new Role
+            {
+                Name = "Manager",
+                Description = "Manages the app products."
+            },
+            new Role
+            {
+                Name = "Customer",
+                Description = "The client user."
+            }
+            );
         }
 
-        bool AddUserAndRoles()
+        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
-            bool success = false;
-
-            var idManager = new IdentityManager();
-            success = idManager.CreateRole("Admin");
-            if (!success == true) return success;
-
-            success = idManager.CreateRole("Manager");
-            if (!success == true) return success;
-
-            success = idManager.CreateRole("Customer");
-            if (!success) return success;
-
-
-            var newUser = new User()
+            using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
-                UserName = "Admin",
-                Email = "admin@domain.com",
-                PhoneNumber = "1234567890",
-                Photo = new UserPhoto { Url = "/images/users/Icon-user.png" }
-            };
-
-            // Be careful here - you  will need to use a password which will 
-            // be valid under the password rules for the application, 
-            // or the process will abort:
-            success = idManager.CreateUser(newUser, "Password1");
-            if (!success) return success;
-
-            success = idManager.AddUserToRole(newUser.Id, "Admin");
-            if (!success) return success;
-
-            return success;
+                passwordSalt = hmac.Key;
+                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }
         }
     }
 }

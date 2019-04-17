@@ -16,7 +16,7 @@ namespace RentACar.DataContext.Migrations
                         CarId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.CarGalleryId)
-                .ForeignKey("dbo.Car", t => t.CarId)
+                .ForeignKey("dbo.Car", t => t.CarId, cascadeDelete: true)
                 .Index(t => t.CarId);
             
             CreateTable(
@@ -38,7 +38,7 @@ namespace RentACar.DataContext.Migrations
                         PortfolioId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.CarId)
-                .ForeignKey("dbo.Portfolio", t => t.PortfolioId)
+                .ForeignKey("dbo.Portfolio", t => t.PortfolioId, cascadeDelete: true)
                 .Index(t => t.PortfolioId);
             
             CreateTable(
@@ -83,14 +83,14 @@ namespace RentACar.DataContext.Migrations
                         EndDate = c.DateTime(nullable: false),
                         NumberOfDays = c.Int(nullable: false),
                         Status = c.String(),
-                        UserId = c.String(maxLength: 128),
+                        UserId = c.Int(nullable: false),
                         CarId = c.Int(nullable: false),
                         PeriodId = c.Int(),
                     })
                 .PrimaryKey(t => t.ReservationId)
-                .ForeignKey("dbo.Car", t => t.CarId)
+                .ForeignKey("dbo.Car", t => t.CarId, cascadeDelete: true)
                 .ForeignKey("dbo.Period", t => t.PeriodId)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.CarId)
                 .Index(t => t.PeriodId);
@@ -106,60 +106,27 @@ namespace RentACar.DataContext.Migrations
                 .PrimaryKey(t => t.PeriodId);
             
             CreateTable(
-                "dbo.AspNetUsers",
+                "dbo.User",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Email = c.String(maxLength: 256),
-                        EmailConfirmed = c.Boolean(nullable: false),
-                        PasswordHash = c.String(maxLength: 500),
-                        SecurityStamp = c.String(maxLength: 500),
-                        PhoneNumber = c.String(maxLength: 50),
-                        PhoneNumberConfirmed = c.Boolean(nullable: false),
-                        TwoFactorEnabled = c.Boolean(nullable: false),
-                        LockoutEndDateUtc = c.DateTime(),
-                        LockoutEnabled = c.Boolean(nullable: false),
-                        AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(nullable: false, maxLength: 256),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
+                        UserId = c.Int(nullable: false, identity: true),
+                        Username = c.String(),
+                        PasswordHash = c.Binary(),
+                        PasswordSalt = c.Binary(),
+                        Email = c.String(),
+                        PhoneNumber = c.String(),
                     })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
-            
-            CreateTable(
-                "dbo.UserClaim",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        ClaimType = c.String(maxLength: 150),
-                        ClaimValue = c.String(maxLength: 500),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
-                .Index(t => t.UserId);
-            
-            CreateTable(
-                "dbo.UserLogin",
-                c => new
-                    {
-                        LoginProvider = c.String(nullable: false, maxLength: 128),
-                        ProviderKey = c.String(nullable: false, maxLength: 128),
-                        UserId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
-                .Index(t => t.UserId);
+                .PrimaryKey(t => t.UserId);
             
             CreateTable(
                 "dbo.UserPhoto",
                 c => new
                     {
-                        UserPhotoId = c.String(nullable: false, maxLength: 128),
+                        UserPhotoId = c.Int(nullable: false),
                         Url = c.String(),
                     })
                 .PrimaryKey(t => t.UserPhotoId)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserPhotoId)
+                .ForeignKey("dbo.User", t => t.UserPhotoId)
                 .Index(t => t.UserPhotoId);
             
             CreateTable(
@@ -169,66 +136,59 @@ namespace RentACar.DataContext.Migrations
                         ReviewId = c.Int(nullable: false, identity: true),
                         Title = c.String(),
                         Content = c.String(),
-                        UserId = c.String(maxLength: 128),
+                        UserId = c.Int(nullable: false),
                         CarId = c.Int(),
                     })
                 .PrimaryKey(t => t.ReviewId)
                 .ForeignKey("dbo.Car", t => t.CarId)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.CarId);
             
             CreateTable(
-                "dbo.UserRole",
+                "dbo.Role",
                 c => new
                     {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Description = c.String(),
                     })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
+                .PrimaryKey(t => t.RoleId);
             
             CreateTable(
-                "dbo.AspNetRoles",
+                "dbo.RoleUser",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
+                        Role_RoleId = c.Int(nullable: false),
+                        User_UserId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+                .PrimaryKey(t => new { t.Role_RoleId, t.User_UserId })
+                .ForeignKey("dbo.Role", t => t.Role_RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.User_UserId, cascadeDelete: true)
+                .Index(t => t.Role_RoleId)
+                .Index(t => t.User_UserId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.UserRole", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.UserLogin", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.UserClaim", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.UserRole", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Review", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.RoleUser", "User_UserId", "dbo.User");
+            DropForeignKey("dbo.RoleUser", "Role_RoleId", "dbo.Role");
+            DropForeignKey("dbo.Review", "UserId", "dbo.User");
             DropForeignKey("dbo.Review", "CarId", "dbo.Car");
-            DropForeignKey("dbo.Reservation", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.UserPhoto", "UserPhotoId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Reservation", "UserId", "dbo.User");
+            DropForeignKey("dbo.UserPhoto", "UserPhotoId", "dbo.User");
             DropForeignKey("dbo.Reservation", "PeriodId", "dbo.Period");
             DropForeignKey("dbo.Reservation", "CarId", "dbo.Car");
             DropForeignKey("dbo.PortfolioPhoto", "PortfolioPhotoId", "dbo.Portfolio");
             DropForeignKey("dbo.Car", "PortfolioId", "dbo.Portfolio");
             DropForeignKey("dbo.CarPhoto", "CarPhotoId", "dbo.Car");
             DropForeignKey("dbo.CarGallery", "CarId", "dbo.Car");
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.UserRole", new[] { "RoleId" });
-            DropIndex("dbo.UserRole", new[] { "UserId" });
+            DropIndex("dbo.RoleUser", new[] { "User_UserId" });
+            DropIndex("dbo.RoleUser", new[] { "Role_RoleId" });
             DropIndex("dbo.Review", new[] { "CarId" });
             DropIndex("dbo.Review", new[] { "UserId" });
             DropIndex("dbo.UserPhoto", new[] { "UserPhotoId" });
-            DropIndex("dbo.UserLogin", new[] { "UserId" });
-            DropIndex("dbo.UserClaim", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Reservation", new[] { "PeriodId" });
             DropIndex("dbo.Reservation", new[] { "CarId" });
             DropIndex("dbo.Reservation", new[] { "UserId" });
@@ -236,13 +196,11 @@ namespace RentACar.DataContext.Migrations
             DropIndex("dbo.CarPhoto", new[] { "CarPhotoId" });
             DropIndex("dbo.Car", new[] { "PortfolioId" });
             DropIndex("dbo.CarGallery", new[] { "CarId" });
-            DropTable("dbo.AspNetRoles");
-            DropTable("dbo.UserRole");
+            DropTable("dbo.RoleUser");
+            DropTable("dbo.Role");
             DropTable("dbo.Review");
             DropTable("dbo.UserPhoto");
-            DropTable("dbo.UserLogin");
-            DropTable("dbo.UserClaim");
-            DropTable("dbo.AspNetUsers");
+            DropTable("dbo.User");
             DropTable("dbo.Period");
             DropTable("dbo.Reservation");
             DropTable("dbo.PortfolioPhoto");

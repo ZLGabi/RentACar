@@ -1,0 +1,25 @@
+﻿.btn-size {
+    width: 2vw;
+    height: 2vw;
+}
+
+.icon-font-size {
+    font-size: 1.5vw;
+}
+
+.border-double {
+    border-left: 1px solid #ffffff;
+    position: relative;
+}
+
+.border-double:before {
+    position: absolute;
+    display: block;
+    content: '';
+    border-left: 1px solid black;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}

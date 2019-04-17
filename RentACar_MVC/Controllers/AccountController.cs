@@ -1,6 +1,5 @@
 ﻿using RentACar.ServicesInfrastructure;
 using RentACar.ServicesInfrastructure.DTO;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace RentACar_MVC.Controllers
@@ -31,11 +30,32 @@ namespace RentACar_MVC.Controllers
         public ActionResult Customers()
         {
             var customers = _userService.GetCustomers();
-            return PartialView("_Customers",customers);
+            return PartialView("_Customers", customers);
         }
 
         public ActionResult Login()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult CreateManager()
+        {
+            return PartialView("_CreateManager");
+        }
+
+        [HttpPost]
+        public ActionResult CreateManager(UserDTO userDTO)
+        {
+            if (ModelState.IsValid && !_userService.UserExists(userDTO.Username))
+            {
+                _userService.AddUser(userDTO);
+
+                _userService.AddUserToRole(userDTO.Username, "Manager");
+
+                return RedirectToAction("Index", "Account");
+            }
+
             return View();
         }
 
@@ -60,19 +80,15 @@ namespace RentACar_MVC.Controllers
         }
 
         [HttpPost]
-        public  ActionResult Register(UserDTO userDTO)
+        public ActionResult Register(UserDTO userDTO)
         {
             if (ModelState.IsValid && !_userService.UserExists(userDTO.Username))
             {
-                var userResult = _userService.AddUser(userDTO, userDTO.Password);
-                if (userResult.Succeeded)
-                {
-                    var roleResult = _userService.AddUserToRole(userDTO.Username, "Customer");
-                    if (roleResult.Succeeded)
-                    {
-                        return RedirectToAction("Login", "Account");
-                    }
-                }
+                _userService.AddUser(userDTO);
+
+                _userService.AddUserToRole(userDTO.Username, "Customer");
+
+                return RedirectToAction("Login", "Account");
             }
 
             return View(userDTO);

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using System;
@@ -14,7 +13,7 @@ namespace RentACar_MVC
         {
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                AuthenticationType = "ApplicationCookie",
                 CookieName = "RentACarCookie",
                 ExpireTimeSpan = TimeSpan.FromDays(1),
                 LoginPath = new PathString("/Account/Login")

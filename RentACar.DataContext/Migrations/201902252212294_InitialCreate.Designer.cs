@@ -13,7 +13,7 @@ namespace RentACar.DataContext.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201901292232553_InitialCreate"; }
+            get { return "201902252212294_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

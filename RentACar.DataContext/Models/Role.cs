@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace RentACar.DataContext.Models
 {
-    public class Role: IdentityRole
+    public class Role
     {
+        public int RoleId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

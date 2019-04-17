@@ -12,7 +12,7 @@ namespace RentACar.DataContext.Models
         public int NumberOfDays { get; set; }
         public string Status { get; set; }
 
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public virtual User User { get; set; }
 
         public int CarId { get; set; }

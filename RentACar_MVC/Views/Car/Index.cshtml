@@ -5,29 +5,31 @@
 <div class="card-deck justify-content-center">
     @foreach (var car in Model)
     {
-        <div class="card col-lg-4 col-md-6 col-sm-12">
-            <img class="card-img-top" src="@car.MainPhoto.Url" alt="Portfolio image">
-            <div class="card-body">
-                <h5 class="card-title text-info">@car.Brand @car.Model</h5>
-                <small>
-                    From
-                    <a href="@Url.Action("Details","Portfolio", new { id = car.PortfolioId })">@car.PortfolioName</a>
-                    portfolio
-                </small>
-                <p class="card-text">Price: @car.Price€/day</p>
-            </div>
-            <div class="card-footer bg-transparent row flex-nowrap border-0 m-0">
-                <div class="col-lg-6 align-self-center p-0">
-                    @if (car.IsAvailable)
-                    {
-                        <p class="card-text available-box available-outline-success w-100">Available</p>
-                    }
-                    else
-                    {
-                        <p class="card-text available-box available-outline-danger w-100">Unavailable</p>
-                    }
+        <div class="col-lg-4 col-md-6 col-sm-12 pb-3 pt-3">
+            <div class="card h-100">
+                <img class="card-img-top" src="@car.MainPhoto.Url" alt="Portfolio image">
+                <div class="card-body">
+                    <h5 class="card-title text-info">@car.Brand @car.Model</h5>
+                    <small>
+                        From
+                        <a href="@Url.Action("Details","Portfolio", new { id = car.PortfolioId })">@car.PortfolioName</a>
+                        portfolio
+                    </small>
+                    <p class="card-text">Price: @car.Price€/day</p>
                 </div>
-                <a href="@Url.Action("Details", new { id = car.CarId })" class="btn btn-primary text-nowrap col-lg-6">Details</a>
+                <div class="card-footer bg-transparent row flex-nowrap border-0 m-0">
+                    <div class="col-lg-6 align-self-center p-0">
+                        @if (car.IsAvailable)
+                        {
+                            <p class="card-text text-nowrap available-box available-outline-success w-100">Available</p>
+                        }
+                        else
+                        {
+                            <p class="card-text text-nowrap available-box available-outline-danger w-100">Unavailable</p>
+                        }
+                    </div>
+                    <a href="@Url.Action("Details", new { id = car.CarId })" class="btn btn-primary text-nowrap col-lg-6">Details</a>
+                </div>
             </div>
         </div>
     }
